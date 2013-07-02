@@ -3,12 +3,12 @@
  * Displays a single question
  * @param id
  * @param content String holding content of the question.
- * @param author String holding name of the question's author.
+ * @param author
  */
 {template .question}
 <article>
 	<p class="questioncontent">{$content}</p>
-	<p class="questionauthor">author: {$author}, <a href="/question/{$id}/edit">edit</a></p>
+	<p class="questionauthor">author: {$author.name}, <a href="/question/{$id}/edit">edit</a></p>
 </article>
 {/template}
 
