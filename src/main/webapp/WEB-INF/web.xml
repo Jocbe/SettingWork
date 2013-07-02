@@ -12,7 +12,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		</filter-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>org.example.AppOne</param-value>
+			<param-value>org.example.SettingWork</param-value>
 		</init-param>
 	</filter>
 	
