@@ -8,17 +8,7 @@
 <h1>Question set '{$name}'</h1>
 <ul>
 	{foreach $question in $questions}
-		{call .question}
-			{param name: $question /}
-		{/call}
+		{call questions.question data="$question" /}
 	{/foreach}
 </ul>
-{/template}
-
-/**
-* Displays name of given questionset
-* @param name
-*/
-{template .questionsetname}
-	{$name}
 {/template}
