@@ -10,7 +10,7 @@ public class SessionFactoryManager {
 		if (sessionFactory == null) {
 			sessionFactory = new Configuration()
 				.configure()
-				.buildSessionFactory();
+				.buildSessionFactory(null);
 		}
 		
 		return sessionFactory;
