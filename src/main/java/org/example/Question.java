@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
 import javax.persistence.FetchType;
+import javax.ws.rs.FormParam;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -16,9 +18,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Question {
 	
 	private QuestionSet parentSet;
-	private String content;
+	@FormParam("content") private String content;
 	private User author;
-	private int id;
+	@FormParam("id") private int id;
 	
 	public Question() {}
 	public Question(String c, QuestionSet pS, User a) {

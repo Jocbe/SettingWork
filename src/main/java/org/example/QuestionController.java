@@ -39,20 +39,33 @@ public class QuestionController {
 	@Path("/{questionID}/edit")
 	@ViewWith("/soy/questions.questionedit")
 	public Question editQuestion(@PathParam("questionID") int questionID) {
-		Question result = new Question("Enter your question here.", null, null);
-		return result;
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		Question result = (Question)session.createQuery( 
+				"from Question where id = ?")
+				.setInteger(0, questionID)
+				.uniqueResult();
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		if (result == null)
+			return new Question("Content", null, null);
+		else
+			return result;
 	}
 	
 	@POST
 	@Path("/{questionID}")
-	@ViewWith("/soy/questions.questionedit")
-	public void saveQuestion(@Form Question q) {
+	@ViewWith("/soy/questions.question")
+	public Question saveQuestion(@Form Question q) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
-		session.save(q);
+		session.update(q);
+		System.out.println(q.getId() + " " + q.getContent());
 		session.getTransaction().commit();
 		session.close();
-		
+		return q;
 	}
 	
 }

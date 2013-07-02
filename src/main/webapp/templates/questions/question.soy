@@ -26,12 +26,13 @@
  * Displays a question edition form
  * @param id
  * @param content
- * @param author
  */
 {template .questionedit}
+<h1>Editing question {$id}</h1>
 <form method="post" action="/question/{$id}">
         <input type="text" name="content" value="{$content}"/>
-        <input type="text" name="author" value="{$author}"/>
+        //<input type="text" name="author" value="{$author}"/>
+        <input type="hidden" name="id" value="{$id}" />
         <input type="submit"/>
 </form>
 {/template}
