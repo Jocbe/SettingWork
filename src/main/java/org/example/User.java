@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 public class User {
 	private String name;
 	private List<QuestionSet> questionSets;
+	private List<Question> questions;
 	private String id;
 	
 	public User() {}
@@ -21,17 +22,34 @@ public class User {
 		name = n;
 		id = i;
 		questionSets = new LinkedList<QuestionSet>();
+		questions = new LinkedList<Question>();
 	}
+	
 	
 	@Id
 	public String getID() {return id;}
 	
 	@OneToMany(mappedBy = "owner")
-	public List<QuestionSet> getQuestionSets() {
-		return questionSets;
-	}
+	public List<QuestionSet> getQuestionSets() {return questionSets;}
 	
 	public String getName() {return name;}
+	
+	@OneToMany(mappedBy = "author")
+	public List<Question> getQuestions() {return questions;}
+	
+	
+	public void addQuestion(Question q) {
+		questions.add(q);
+	}
+	public void deleteQuestion(int i) {
+		questions.remove(i);
+	}
+	public void addQuestionSet(QuestionSet qS) {
+		questionSets.add(qS);
+	}
+	public void deleteQuestionSet(int i) {
+		questionSets.remove(i);
+	}
 	
 	
 }

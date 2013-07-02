@@ -23,15 +23,16 @@ public class Question {
 	}
 	
 	@ManyToOne
-	public int getParentSet() {return parentSet;}
+	public int getParentSet() {
+		return parentSet;
+	}
 	
 	@ManyToOne
-	public String getAuthor() {return author;}
+	public String getAuthor() {
+		return author;
+	}
 	
-	public String content() {return content;}
-	
-	
-	public void update(String c) {
-		content = c;
+	public String content() {
+		return content;
 	}
 }
