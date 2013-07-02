@@ -1,0 +1,24 @@
+{namespace .questions}
+/**
+* Displays all question in a given questionset
+* @param name Name of the questionset.
+* @param questions List of question objects belonging to this questionset
+*/
+{template .questionset}
+<h1>Question set '{$name}'</h1>
+<ul>
+	{foreach $question in $questions}
+		{call .question}
+			{param name: $question /}
+		{/call}
+	{/foreach}
+</ul>
+{/template}
+
+/**
+* Displays name of given questionset
+* @param name
+*/
+{template .questionsetname}
+	{$name}
+{/template}
