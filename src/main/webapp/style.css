@@ -1,0 +1,14 @@
+body {
+	font-family: tahoma;
+}
+
+header, section, article {
+	border: 1px solid black;
+	padding: 10pt;
+	margin: 10pt;
+}
+
+.questionauthor {
+	font-style: italic;
+	font-size: small;
+}

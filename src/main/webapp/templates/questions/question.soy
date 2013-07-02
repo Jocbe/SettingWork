@@ -1,19 +1,20 @@
 {namespace questions}
 /**
-* Displays a single question
-* @param content String holding content of the question.
-* @param author String holding name of the question's author.
-*/
+ * Displays a single question
+ * @param id
+ * @param content String holding content of the question.
+ * @param author String holding name of the question's author.
+ */
 {template .question}
 <article>
-	<h1>Question</h1>
 	<p class="questioncontent">{$content}</p>
-	<p>author: {$author}</p>
+	<p class="questionauthor">author: {$author}, <a href="/question/{$id}/edit">edit</a></p>
 </article>
 {/template}
 
 /**
  * Displays a full page with one question
+ * @param id
  * @param content
  * @param author
  */
@@ -21,6 +22,7 @@
 	{call shared.header /}
 	<h1>Question view</h1>
 	{call .question data="all" /}
+	<p><a href="/question">Back to question list</a></p>
 	{call shared.footer /}
 {/template}
 
@@ -30,12 +32,39 @@
  * @param content
  */
 {template .questionedit}
-<h1>Editing question {$id}</h1>
+	{call shared.header /}
+	{if $id != 0}
+		<h1>Editing question {$id}</h1>
+	{else}
+		<h1>Adding new question</h1>
+	{/if}
 <form method="post" action="/question/{$id}">
         <input type="text" name="content" value="{$content}"/>
-        //<input type="text" name="author" value="{$author}"/>
         <input type="hidden" name="id" value="{$id}" />
         <input type="submit"/>
 </form>
+	{call shared.footer /}
 {/template}
 
+/**
+ * No such question, no parameters
+ */
+{template .nosuchquestion}
+	{call shared.header /}
+	<p class="error">No such question</p>
+	{call shared.footer /}
+{/template}
+
+/**
+ * All questions
+ * @param questions
+ */
+{template .allquestions}
+	{call shared.header /}
+	<h1>All questions</h1>
+	{foreach $question in $questions}
+		{call .question data="$question" /}
+	{/foreach}
+	<p><a href="/question/add">Add new</a></p>
+	{call shared.footer /}
+{/template}
