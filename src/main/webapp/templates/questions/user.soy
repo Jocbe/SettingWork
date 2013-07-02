@@ -5,12 +5,21 @@
 * @param questionsets A list of question sets
 */
 {template .user}
-<h1>User '{$name}'</h1>
-<ul>
+	<h1>User '{$name}'</h1>
 	{foreach $questionset in $questionsets}
 		<li>
 			{$questionset.name}
 	 	</li>
 	{/foreach}
-</ul>
+{/template}
+
+/**
+ * Displays a full page with a given user
+ * @param name
+ * @param questionsets
+ */
+{template .questionsetview}
+	{call shared.header /}
+	{call .user data="all" /}
+	{call shared.footer /}
 {/template}

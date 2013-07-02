@@ -16,14 +16,7 @@ public class QuestionController {
 	@Path("/{questionID}")
 	@ViewWith("/soy/questions.questionview")
 	public Question showQuestion(@PathParam("questionID") int questionID) {
-		Session session = SessionFactoryManager.getInstance().openSession();	
-		session.beginTransaction();
-		Question q = new Question("hi", null, null);
-		session.save(q);
-		session.getTransaction().commit();
-		session.close();
-
-		session = SessionFactoryManager.getInstance().openSession();
+		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		Question result = (Question)session.createQuery( 
 				"from Question where id = ?")
@@ -57,11 +50,11 @@ public class QuestionController {
 	
 	@POST
 	@Path("/{questionID}")
-	@ViewWith("/soy/questions.question")
+	@ViewWith("/soy/questions.questionview")
 	public Question saveQuestion(@Form Question q) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
-		session.update(q);
+		session.saveOrUpdate(q);
 		System.out.println(q.getId() + " " + q.getContent());
 		session.getTransaction().commit();
 		session.close();

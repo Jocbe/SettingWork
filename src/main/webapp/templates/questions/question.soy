@@ -6,6 +6,7 @@
 */
 {template .question}
 <article>
+	<h1>Question</h1>
 	<p class="questioncontent">{$content}</p>
 	<p>author: {$author}</p>
 </article>
@@ -18,6 +19,7 @@
  */
 {template .questionview}
 	{call shared.header /}
+	<h1>Question view</h1>
 	{call .question data="all" /}
 	{call shared.footer /}
 {/template}

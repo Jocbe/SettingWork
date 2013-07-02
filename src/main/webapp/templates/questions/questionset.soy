@@ -5,10 +5,19 @@
 * @param questions List of question objects belonging to this questionset
 */
 {template .questionset}
-<h1>Question set '{$name}'</h1>
-<ul>
+	<h1>Question set '{$name}'</h1>
 	{foreach $question in $questions}
 		{call questions.question data="$question" /}
 	{/foreach}
-</ul>
+{/template}
+
+/**
+ * Displays a full page with a given questionset
+ * @param name
+ * @param questions
+ */
+{template .questionsetview}
+	{call shared.header /}
+	{call .questionset data="all" /}
+	{call shared.footer /}
 {/template}
