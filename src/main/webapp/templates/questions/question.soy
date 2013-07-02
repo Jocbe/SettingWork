@@ -5,8 +5,34 @@
 * @param author String holding name of the question's author.
 */
 {template .question}
-<li>
-	<p>{$content}</p>
+<article>
+	<p class="questioncontent">{$content}</p>
 	<p>author: {$author}</p>
-</li>
+</article>
 {/template}
+
+/**
+ * Displays a full page with one question
+ * @param content
+ * @param author
+ */
+{template .questionview}
+	{call shared.header /}
+	{call .question data="all" /}
+	{call shared.footer /}
+{/template}
+
+/** 
+ * Displays a question edition form
+ * @param id
+ * @param content
+ * @param author
+ */
+{template .questionedit}
+<form method="post" action="/car/{$id}">
+        <input type="text" name="content" value="{$content}"/>
+        <input type="text" name="author" value="{$author}"/>
+        <input type="submit"/>
+</form>
+{/template}
+
