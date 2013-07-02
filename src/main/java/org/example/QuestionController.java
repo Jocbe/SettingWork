@@ -3,6 +3,7 @@ package org.example;
 import com.googlecode.htmleasy.ViewWith;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import org.hibernate.Session;
 import org.jboss.resteasy.annotations.Form;
@@ -45,12 +46,13 @@ public class QuestionController {
 	@POST
 	@Path("/{questionID}")
 	@ViewWith("/soy/questions.questionedit")
-	public Question saveQuestion(@Form Question q) {
+	public void saveQuestion(@Form Question q) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		session.save(q);
 		session.getTransaction().commit();
 		session.close();
+		
 	}
 	
 }
