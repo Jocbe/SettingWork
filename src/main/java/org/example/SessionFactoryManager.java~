@@ -7,11 +7,11 @@ public class SessionFactoryManager {
 	private static SessionFactory sessionFactory;
 	
 	public static SessionFactory getInstance() {
-		if (sessionFactory == null) {
+		//if (sessionFactory == null) {
 			sessionFactory = new Configuration()
 				.configure()
 				.buildSessionFactory();
-		}
+		//}
 		
 		return sessionFactory;
 	}
