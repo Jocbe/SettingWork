@@ -14,6 +14,7 @@ public class Question {
 	private int parentSet;
 	private String content;
 	private String author;
+	private int id;
 	
 	public Question() {}
 	public Question(String c, int pS, String o) {
@@ -21,6 +22,11 @@ public class Question {
 		parentSet = pS;
 		owner = o;
 	}
+	
+	@id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy="increment")
+	public int getId() {return id;}
 	
 	@ManyToOne
 	public int getParentSet() {return parentSet;}
