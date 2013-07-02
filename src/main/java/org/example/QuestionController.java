@@ -14,10 +14,18 @@ public class QuestionController {
 	@Path("/{questionID}")
 	@ViewWith("/soy/questions.question")
 	public Question showQuestion(@PathParam("questionID") int questionID) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = SessionFactoryManager.getInstance().openSession();	
+		session.beginTransaction();
+		Question q = new Question("hi", null, null);		
+		session.save(q);
+		session.getTransaction().commit();
+		session.close();
+
+
+		session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		Question result = (Question)session.createQuery( 
-				"from Question where question.id = ?")
+				"from Question where id = ?")
 				.setInteger(0, questionID)
 				.uniqueResult();
 		
