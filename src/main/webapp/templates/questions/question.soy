@@ -8,7 +8,7 @@
 {template .question}
 <article>
 	<p class="questioncontent">{$content}</p>
-	<p class="questionauthor">author: {$author}, <a href="{$id}/edit">edit</a></p>
+	<p class="questionauthor">author: {$author}, <a href="/question/{$id}/edit">edit</a></p>
 </article>
 {/template}
 
@@ -22,6 +22,7 @@
 	{call shared.header /}
 	<h1>Question view</h1>
 	{call .question data="all" /}
+	<p><a href="/question">Back to question list</a></p>
 	{call shared.footer /}
 {/template}
 
@@ -32,7 +33,11 @@
  */
 {template .questionedit}
 	{call shared.header /}
-<h1>Editing question {$id}</h1>
+	{if $id != 0}
+		<h1>Editing question {$id}</h1>
+	{else}
+		<h1>Adding new question</h1>
+	{/if}
 <form method="post" action="/question/{$id}">
         <input type="text" name="content" value="{$content}"/>
         <input type="hidden" name="id" value="{$id}" />
@@ -41,3 +46,25 @@
 	{call shared.footer /}
 {/template}
 
+/**
+ * No such question, no parameters
+ */
+{template .nosuchquestion}
+	{call shared.header /}
+	<p class="error">No such question</p>
+	{call shared.footer /}
+{/template}
+
+/**
+ * All questions
+ * @param questions
+ */
+{template .allquestions}
+	{call shared.header /}
+	<h1>All questions</h1>
+	{foreach $question in $questions}
+		{call .question data="$question" /}
+	{/foreach}
+	<p><a href="/question/add">Add new</a></p>
+	{call shared.footer /}
+{/template}
