@@ -12,15 +12,13 @@ import javax.persistence.OneToMany;
 @Table( name = "USERS" )
 public class User {
 	private String name;
-	private Set<QuestionSet> questionSets = new HashSet<QuestionSet>();
-	private Set<Question> questions = new HashSet<Question>();
+	/*private Set<QuestionSet> questionSets = new HashSet<QuestionSet>();
+	private Set<Question> questions = new HashSet<Question>();*/
 	private String id;
-	//private int id;
 	
 	public User() {}
 	
 	public User(String n, String i) {
-	//public User(String n, int i) {
 		name = n;
 		id = i;
 	}
@@ -29,16 +27,16 @@ public class User {
 	@Id
 	public String getId() {return id;}
 	
-	@OneToMany(mappedBy = "owner")
-	public Set<QuestionSet> getQuestionSets() {return questionSets;}
+	/*@OneToMany(mappedBy = "owner")
+	public Set<QuestionSet> getQuestionSets() {return questionSets;}*/
 	
 	public String getName() {return name;}
 	
-	@OneToMany(mappedBy = "author")
-	public Set<Question> getQuestions() {return questions;}
+	/*@OneToMany(mappedBy = "author")
+	public Set<Question> getQuestions() {return questions;}*/
 	
 	
-	public void addQuestion(Question q) {
+	/*public void addQuestion(Question q) {
 		questions.add(q);
 	}
 	public void deleteQuestion(int i) {
@@ -49,11 +47,11 @@ public class User {
 	}
 	public void deleteQuestionSet(int i) {
 		questionSets.remove(i);
-	}
+	}*/
 	
 	public void setId(String i) {id = i;}
 	public void setName(String n) {name = n;}
-	public void setQuestionSets(Set<QuestionSet> qS) {questionSets = qS;}
-	public void setQuestions(Set<Question> q) {questions = q;}
+	//public void setQuestionSets(Set<QuestionSet> qS) {questionSets = qS;}
+	//public void setQuestions(Set<Question> q) {questions = q;}
 	
 }

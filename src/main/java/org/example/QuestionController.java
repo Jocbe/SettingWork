@@ -55,7 +55,7 @@ public class QuestionController {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(q);
-		System.out.println(q.getId() + " " + q.getContent());
+		//System.out.println(q.getId() + " " + q.getContent());
 		session.getTransaction().commit();
 		session.close();
 		return q;

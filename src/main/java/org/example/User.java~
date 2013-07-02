@@ -15,12 +15,10 @@ public class User {
 	private Set<QuestionSet> questionSets = new HashSet<QuestionSet>();
 	private Set<Question> questions = new HashSet<Question>();
 	private String id;
-	//private int id;
 	
 	public User() {}
 	
 	public User(String n, String i) {
-	//public User(String n, int i) {
 		name = n;
 		id = i;
 	}
@@ -34,8 +32,8 @@ public class User {
 	
 	public String getName() {return name;}
 	
-	@OneToMany(mappedBy = "author")
-	public Set<Question> getQuestions() {return questions;}
+	/*@OneToMany(mappedBy = "author")
+	public Set<Question> getQuestions() {return questions;}*/
 	
 	
 	public void addQuestion(Question q) {

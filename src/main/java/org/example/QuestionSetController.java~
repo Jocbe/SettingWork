@@ -1,0 +1,47 @@
+package org.example;
+
+import com.googlecode.htmleasy.ViewWith;
+import javax.ws.rs.Path;
+import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
+import org.hibernate.Session;
+
+@Path("/qsets")
+public class QuestionSetController {
+
+	@GET @Path("/{qsID}")
+	@ViewWith("/soy/questions.questionsetview")
+	public QuestionSet showQuestionSet(@PathParam("qsID") int qsID) {
+		
+		User u = new User("Bob", "bbb123");
+		QuestionSet q = new QuestionSet(u);
+		q.setName("Bob's first question set");
+		u.addQuestionSet(q);
+		
+		System.out.println("                           " + q.getId());
+		
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(u);
+		session.saveOrUpdate(q);
+		session.getTransaction().commit();
+		session.close();
+		
+		System.out.println("    ##########################       " + u.getId());
+		
+		
+		/*session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		QuestionSet result = (QuestionSet)session.createQuery(
+				"from QuestionSet where id = ?")
+				.setInteger(0, qsID)
+				.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		if (result == null) {
+			return new QuestionSet(null, "Nothing here", null);
+		} 
+		return result;*/return q;
+		
+	}
+}

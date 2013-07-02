@@ -11,7 +11,7 @@ public class SettingWork extends Application {
 		Set<Class<?>> myServices = new HashSet<Class<?>>();
 
 		// Add my own JAX-RS annotated classes
-		//myServices.add(QuestionController.class);
+		myServices.add(QuestionController.class);
 
 		// Add Htmleasy Providers
 		myServices.addAll(HtmleasyProviders.getClasses());
