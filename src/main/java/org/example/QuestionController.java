@@ -60,5 +60,4 @@ public class QuestionController {
 		session.close();
 		return q;
 	}
-	
 }

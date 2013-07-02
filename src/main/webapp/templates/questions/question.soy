@@ -1,19 +1,20 @@
 {namespace questions}
 /**
-* Displays a single question
-* @param content String holding content of the question.
-* @param author String holding name of the question's author.
-*/
+ * Displays a single question
+ * @param id
+ * @param content String holding content of the question.
+ * @param author String holding name of the question's author.
+ */
 {template .question}
 <article>
-	<h1>Question</h1>
 	<p class="questioncontent">{$content}</p>
-	<p>author: {$author}</p>
+	<p class="questionauthor">author: {$author}, <a href="{$id}/edit">edit</a></p>
 </article>
 {/template}
 
 /**
  * Displays a full page with one question
+ * @param id
  * @param content
  * @param author
  */
@@ -30,12 +31,13 @@
  * @param content
  */
 {template .questionedit}
+	{call shared.header /}
 <h1>Editing question {$id}</h1>
 <form method="post" action="/question/{$id}">
         <input type="text" name="content" value="{$content}"/>
-        //<input type="text" name="author" value="{$author}"/>
         <input type="hidden" name="id" value="{$id}" />
         <input type="submit"/>
 </form>
+	{call shared.footer /}
 {/template}
 
