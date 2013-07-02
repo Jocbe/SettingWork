@@ -53,7 +53,7 @@
 
         <mapping class="org.example.Question" />
         <mapping class="org.example.QuestionSet" />
-        <mapping class="org.example.Users" />
+        <mapping class="org.example.User" />
 
     </session-factory>
 
