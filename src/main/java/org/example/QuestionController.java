@@ -1,11 +1,11 @@
 package org.example;
 
 import com.googlecode.htmleasy.ViewWith;
-import com.googlecode.htmleasy.Form;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.PathParam;
 import org.hibernate.Session;
+import org.jboss.resteasy.annotations.Form;
 
 
 @Path("/question")
@@ -38,7 +38,7 @@ public class QuestionController {
 	@Path("/{questionID}/edit")
 	@ViewWith("/soy/questions.questionedit")
 	public Question editQuestion(@PathParam("questionID") int questionID) {
-		Question result = new Question("Enter your question here.");
+		Question result = new Question("Enter your question here.", null, null);
 		return result;
 	}
 	
