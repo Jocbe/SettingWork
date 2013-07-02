@@ -21,7 +21,7 @@ public class QuestionController {
 		session.getTransaction().commit();
 		session.close();
 
-
+System.out.println("@@@@@@@@@@@@@@@@ " + q.getId());
 		session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		Question result = (Question)session.createQuery( 

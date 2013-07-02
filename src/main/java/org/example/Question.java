@@ -43,7 +43,8 @@ public class Question {
 	public User getAuthor() {return author;}
 	 //public String getAuthor() {return author;}
 	
-	public String content() {return content;}
+
+	public String getContent() {return content;}
 	
 	
 	public void update(String c) {
