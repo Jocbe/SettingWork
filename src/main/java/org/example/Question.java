@@ -17,12 +17,10 @@ public class Question {
 	
 	private QuestionSet parentSet;
 	private String content;
-	//private String author;
 	private User author;
 	private int id;
 	
 	public Question() {}
-	//public Question(String c, int pS, String a) {
 	public Question(String c, QuestionSet pS, User a) {
 		content = c;
 		parentSet = pS;
@@ -34,14 +32,11 @@ public class Question {
 	@GenericGenerator(name="increment", strategy="increment")
 	public int getId() {return id;}
 	
-	@ManyToOne(/*targetEntity = User.class, fetch=FetchType.LAZY*/)
-	//@JoinColumn(name="parentSet")
+	@ManyToOne
 	public QuestionSet getParentSet() {return parentSet;}
 	
-	@ManyToOne(/*targetEntity = User.class, fetch=FetchType.LAZY*/)
-	//@JoinColumn(name="author")
+	@ManyToOne
 	public User getAuthor() {return author;}
-	 //public String getAuthor() {return author;}
 	
 
 	public String getContent() {return content;}

@@ -33,8 +33,7 @@ public class User {
 	
 	
 	@Id
-	//public String getID() {return id;}
-	public int getID() {return id;}
+	public int getId() {return id;}
 	
 	@OneToMany(mappedBy = "owner")
 	//public List<QuestionSet> getQuestionSets() {return questionSets;}
