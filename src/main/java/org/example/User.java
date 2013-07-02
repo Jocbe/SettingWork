@@ -14,11 +14,13 @@ public class User {
 	private String name;
 	private List<QuestionSet> questionSets;
 	private List<Question> questions;
-	private String id;
+	//private String id;
+	private int id;
 	
 	public User() {}
 	
-	public User(String n, String i) {
+	//public User(String n, String i) {
+	public User(String n, int i) {
 		name = n;
 		id = i;
 		questionSets = new LinkedList<QuestionSet>();
@@ -27,7 +29,8 @@ public class User {
 	
 	
 	@Id
-	public String getID() {return id;}
+	//public String getID() {return id;}
+	public int getID() {return id;}
 	
 	@OneToMany(mappedBy = "owner")
 	public List<QuestionSet> getQuestionSets() {return questionSets;}

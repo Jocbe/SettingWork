@@ -6,6 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+//import javax.persistence.FetchType;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table( name = "QUESTIONS" )
@@ -13,26 +16,29 @@ public class Question {
 	
 	private int parentSet;
 	private String content;
-	private String author;
+	//private String author;
+	private int author;
 	private int id;
 	
 	public Question() {}
-	public Question(String c, int pS, String o) {
+	//public Question(String c, int pS, String a) {
+	public Question(String c, int pS, int a) {
 		content = c;
 		parentSet = pS;
-		owner = o;
+		author = a;
 	}
 	
-	@id
+	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy="increment")
 	public int getId() {return id;}
 	
-	@ManyToOne
+	@ManyToOne(/*fetch=FetchType.LAZY*/)
 	public int getParentSet() {return parentSet;}
 	
-	@ManyToOne
-	public String getAuthor() {return author;}
+	@ManyToOne(/*fetch=FetchType.LAZY*/)
+	public int getAuthor() {return author;}
+	//public String getAuthor() {return author;}
 	
 	public String content() {return content;}
 	

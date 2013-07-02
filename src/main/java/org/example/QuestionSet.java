@@ -7,21 +7,27 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+//import javax.persistence.FetchType;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table( name = "QUESTIONSETS" )
 public class QuestionSet {
 	private List<Question> questions;
-	private String owner;
+	//private String owner;
+	private int owner;
 	private int id;
 	private String name;
 	
 	public QuestionSet() {}
-	public QuestionSet(String o) {
+	//public QuestionSet(String o) {
+	public QuestionSet(int o) {
 		owner = o;
 		questions = new LinkedList<Question>();
 	}
-	public QuestionSet(String o, String n, List<Question> q)
+	//public QuestionSet(String o, String n, List<Question> q) {
+	public QuestionSet(int o, String n, List<Question> q) {
 		owner = o;
 		questions = q;
 		name = n;
@@ -32,10 +38,11 @@ public class QuestionSet {
 	@GenericGenerator(name="increment", strategy="increment")
 	public int getId() {return id;}
 	
-	@ManyToOne
-	public String getOwner() {return owner;}
+	@ManyToOne(/*fetch=FetchType.LAZY*/)
+	public int getOwner() {return owner;}
+	//public String getOwner() {return owner;}
 	
-	@OneToMany(mappedBy="parentSet");
+	@OneToMany(mappedBy="parentSet")
 	public List<Question> getQuestions() {return questions;}
 	
 	public String getName() {return name;}
