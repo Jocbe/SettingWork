@@ -1,6 +1,7 @@
 package org.example;
 
 import com.googlecode.htmleasy.ViewWith;
+import com.googlecode.htmleasy.Form;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.PathParam;
@@ -33,5 +34,23 @@ public class QuestionController {
 		return result;
 	}
 	
+	@GET
+	@Path("/{questionID}/edit")
+	@ViewWith("/soy/questions.questionedit")
+	public Question editQuestion(@PathParam("questionID") int questionID) {
+		Question result = new Question("Enter your question here.");
+		return result;
+	}
+	
+	@POST
+	@Path("/{questionID}")
+	@ViewWith("/soy/questions.questionedit")
+	public Question saveQuestion(@Form Question q) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		session.save(q);
+		session.getTransaction().commit();
+		session.close();
+	}
 	
 }
