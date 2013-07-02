@@ -34,7 +34,13 @@ public class QuestionSet {
 	public String getOwner() {return owner;}
 	
 	@OneToMany(mappedBy="parentSet");
-	public List<Question> getQuestions() {
-		return questions;
+	public List<Question> getQuestions() {return questions;}
+	
+	
+	public void addQuestion(Question q) {
+		questions.add(q);
+	}
+	public void deleteQuestion(int i) {
+		questions.remove(i);
 	}
 }
