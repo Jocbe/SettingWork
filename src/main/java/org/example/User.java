@@ -27,7 +27,7 @@ public class User {
 	
 	
 	@Id
-	public int getId() {return id;}
+	public String getId() {return id;}
 	
 	@OneToMany(mappedBy = "owner")
 	public Set<QuestionSet> getQuestionSets() {return questionSets;}
@@ -51,7 +51,7 @@ public class User {
 		questionSets.remove(i);
 	}
 	
-	public void setId(int i) {id = i;}
+	public void setId(String i) {id = i;}
 	public void setName(String n) {name = n;}
 	public void setQuestionSets(Set<QuestionSet> qS) {questionSets = qS;}
 	public void setQuestions(Set<Question> q) {questions = q;}
