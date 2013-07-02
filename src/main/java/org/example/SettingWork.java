@@ -15,6 +15,7 @@ public class SettingWork extends Application {
 		myServices.add(QuestionController.class);
 		myServices.add(UserController.class);
 		myServices.add(QuestionSetController.class);
+		myServices.add(MainController.class);
 
 		// Add Htmleasy Providers
 		myServices.addAll(HtmleasyProviders.getClasses());
