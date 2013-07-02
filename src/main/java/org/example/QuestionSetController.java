@@ -28,6 +28,9 @@ public class QuestionSetController {
 		session.beginTransaction();
 		session.saveOrUpdate(u);
 		session.saveOrUpdate(q);
+		session.saveOrUpdate(new Question("question 1?", q, u));
+		session.saveOrUpdate(new Question("How are you today?", q, u));
+		session.saveOrUpdate(new Question("This is a question.", q, u));
 		session.getTransaction().commit();
 		session.close();
 		
@@ -37,20 +40,18 @@ public class QuestionSetController {
 		List questions = session.createQuery(
 				"from Question where parentSet = ?")
 				.setInteger(0, qsID).list();
+		QuestionSet questionSet = ((QuestionSet)session.createQuery(
+				"from QuestionSet where id = ?")
+				.setInteger(0, qsID)
+				.uniqueResult());
 		session.getTransaction().commit();
 		session.close();
 		
-		/*session = SessionFactoryManager.getInstance().openSession();
-		session.beginTransaction();
-		String name = ((QuestionSet)session.createQuery(
-				"from QuestionSet where parentSet = ?")
-				.setInteger(0, qsID)
-				.uniqueResult())
-				.getName();
-		session.getTransaction().commit();
-		session.close();*/
+		if (questionSet == null) {
+			return ImmutableMap.of("name", "### Invalid question set ID! ###", "questions", null);
+		}
 		
-		String name = "n";
+		String name = questionSet.getName();
 		return ImmutableMap.of("name", name, "questions", questions);
 		
 	}
