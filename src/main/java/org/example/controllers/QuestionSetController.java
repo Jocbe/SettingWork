@@ -57,7 +57,7 @@ public class QuestionSetController {
 		}
 		
 		String name = questionSet.getName();
-		return ImmutableMap.of("name", name, "questions", questions, "id", qsID);
+		return ImmutableMap.of("name", name, "questions", questions, "id", qsID, "owner", questionSet.getOwner());
 		
 	}
 	

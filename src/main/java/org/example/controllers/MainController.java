@@ -12,6 +12,7 @@ import org.example.models.User;
 import org.hibernate.Session;
 
 import com.google.common.collect.ImmutableMap;
+import com.googlecode.htmleasy.RedirectException;
 import com.googlecode.htmleasy.ViewWith;
 
 @Path("/")
@@ -48,6 +49,7 @@ public class MainController {
 		session.save(q2);
 		session.getTransaction().commit();
 		session.close();
+		throw new RedirectException("/");
 	}
 
 }
