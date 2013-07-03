@@ -28,7 +28,7 @@ public class QuestionSet {
 	public QuestionSet(User o) {
 		owner = o;
 	}
-	public QuestionSet(User o, String n, Set<Question> q) {
+	public QuestionSet(User o, String n) {
 		owner = o;
 		//questions = q;
 		name = n;

@@ -5,25 +5,34 @@
  * @param? userID This is the CRSID of the user
  * @param? userName This is the user's full name
  */
-{template .userEditForm}
-	<form method="post" action="/user/update/{$userID}">
-		{if not $userID}
-			CRSID: <input type="text" name="id" /><br>
-			Full name: <input type="text" name="name" />
-		{else}
+{template .usereditform}
+	{if not $userID}
+		<form method="post" action="/user/add">
+			<table>
+				<tr>
+					<td>CRSID:</td>
+					<td><input type="text" name="id" /></td>
+				</tr><tr>
+					<td>Full name:</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+			</table>
+		</form>
+	{else}
+		<form method="post" action="/user/update/{$userID}">
 			<input type="hidden" name="id" value={$userID} />
 			Full name: <input type="text" name="name" value={$userName} />
-		{/if}
-	</form>
+		</form>
+	{/if}
 {/template}
 
 /**
  * This will create a new user
  */
-{template .newUser}
+{template .adduser}
 	{call shared.header /}
 	<h1>Add a new user</h1>
-	{call .userEditForm /}
+	{call .usereditform /}
 	{call shared.footer /}
 {/template}
 
@@ -35,6 +44,6 @@
 {template .user}
 	{call shared.header /}
 	<h1>Edit user details of user associated with {$userID}</h1>
-	{call .userEditForm data="all" /}
+	{call .usereditform data="all" /}
 	{call shared.footer /}
 {/template}

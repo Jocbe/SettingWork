@@ -16,7 +16,7 @@ import com.googlecode.htmleasy.ViewWith;
 @Path("/user")
 public class UserEditController {
 	
-	@GET @Path("/edit")
+	@GET @Path("/")
 	@ViewWith("/soy/view.user.listall")
 	public Map viewEntireUserList() {
 		Session session = SessionFactoryManager.getInstance().openSession();
@@ -31,10 +31,12 @@ public class UserEditController {
 		return ImmutableMap.of("users", users);
 	}
 	
-	@GET @Path("/new")
-	@ViewWith("/soy/view.user.add")
+	@GET @Path("/add")
+	@ViewWith("/soy/edit.adduser")
 	public Map viewAddUser() {
-		return null;
+		return ImmutableMap.of();
 	}
+	
+	
 }
 
