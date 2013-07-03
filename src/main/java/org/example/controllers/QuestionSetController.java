@@ -25,8 +25,6 @@ public class QuestionSetController {
 	@GET @Path("/")
 	@ViewWith("/soy/questions.allquestionsets")
 	public Map allQuestionSets() {
-		this.addDummyQuestionSet("Set1");
-		
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		List sets = session.createQuery(
@@ -77,12 +75,18 @@ public class QuestionSetController {
 		return result;
 	}
 	
+	@GET @Path("/add")
+	@ViewWith("/soy/edit.set")
+	public QuestionSet addQuestionSet() {
+		return new QuestionSet();
+	}
+	
 	@POST @Path("/{id}")
 	@ViewWith("/soy/view.set")
 	public QuestionSet saveQuestionSet(@Form QuestionSet s) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
-		session.update(s);
+		session.saveOrUpdate(s);
 		session.getTransaction().commit();
 		session.close();
 		throw new RedirectException("/set/" + s.getId());

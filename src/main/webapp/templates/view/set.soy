@@ -2,12 +2,13 @@
 
 /**
  * Displays a full page with a given questionset
+ * @param id
  * @param name
  * @param questions
  */
 {template .set}
 	{call shared.header /}
-	<h1>Set &quot;{$name}&quot;</h1>
-	{call shared.question.multiple data="all" /}
+	{call shared.set.single data="all" /}
+	<p><a href="/set/">Back to set list</a></p>
 	{call shared.footer /}
 {/template}

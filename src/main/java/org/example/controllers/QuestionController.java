@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 
 import org.example.SessionFactoryManager;
 import org.example.models.Question;
+import org.example.models.QuestionSet;
 import org.hibernate.Session;
 import org.jboss.resteasy.annotations.Form;
 
@@ -82,7 +83,20 @@ public class QuestionController {
 	@Path("/add")
 	@ViewWith("/soy/edit.question")
 	public Question addQuestion() {
-		return new Question("Content", null, null);
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		QuestionSet s = new QuestionSet();
+		session.save(s);
+		session.getTransaction().commit();
+		session.close();
+		return new Question("Content", s, null);
+	}
+	
+	@GET
+	@Path("/add/{parentID}")
+	@ViewWith("/soy/edit.question")
+	public Question addQuestion(@PathParam("parentID") int parentID) {
+		return new Question("Content", QuestionSet.fromString(""+parentID), null);
 	}
 
 	@POST
@@ -94,6 +108,6 @@ public class QuestionController {
 		session.saveOrUpdate(q);
 		session.getTransaction().commit();
 		session.close();
-		throw new RedirectException("/question/" + q.getId());
+		throw new RedirectException("/set/" + q.getParentSet().getId());
 	}
 }
