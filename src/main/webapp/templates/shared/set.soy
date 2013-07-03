@@ -2,6 +2,7 @@
 
 /**
  * Displays a single set
+ * @param id
  * @param name
  * @param questions
  */
@@ -10,6 +11,7 @@
 	{foreach $question in $questions}
 		{call shared.question.single data="$question" /}
 	{/foreach}
+	<p><a href="/set/{$id}/edit">Edit set</a></p>
 {/template}
 
 /**
