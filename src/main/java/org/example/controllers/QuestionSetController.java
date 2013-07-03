@@ -60,15 +60,12 @@ public class QuestionSetController {
 		session.close();
 		
 		if (questionSet == null) {
-			System.out.println("@@@@@@@@@@@@@@@@@@");
 			throw new RedirectException("/set/e404");
 		} else {
-			System.out.println("###################");
 			return ImmutableMap.of(
 					"name", questionSet.getName(),
 					"questions", questions,
 					"id", questionSet.getId());
-					//"owner", questionSet.getOwner());
 		}
 	}
 	
