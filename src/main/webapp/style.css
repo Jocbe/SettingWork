@@ -1,11 +1,47 @@
 body {
 	font-family: tahoma;
+	margin: 0;
+	background-color: #ddd;
+	color: #222;
 }
 
-header, section, article {
+header, section, article, footer {
+	padding: 20pt;
+	margin: 0 auto;
+	background-color: white;
+}
+
+article {
 	border: 1px solid black;
-	padding: 10pt;
-	margin: 10pt;
+	padding: 10pt 20pt;
+}
+
+header, section, footer {
+	width: 600pt;
+}
+
+header, footer {
+	background-color: #222;
+	color: #eee;
+}
+
+header a {
+	color: white;
+	text-decoration: none;
+}
+
+section a {
+	color: #555;
+	text-decoration: none;
+}
+
+section a:hover {
+	color: #888;
+	text-decoration: underline;
+}
+
+ul {
+	list-style-type: square;
 }
 
 .questionauthor {
