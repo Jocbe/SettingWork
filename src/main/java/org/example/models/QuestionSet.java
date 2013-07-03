@@ -1,15 +1,15 @@
 package org.example.models;
 
 import java.util.Set;
-import java.util.HashSet;
-import javax.persistence.Id;
+
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
-import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.example.SessionFactoryManager;
+import org.hibernate.Session;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -29,7 +29,24 @@ public class QuestionSet {
 		owner = o;
 		//questions = q;
 		name = n;
-	}	
+	}
+	
+	public static QuestionSet fromString(String sid) {
+		int id;
+		try {
+			id = Integer.parseInt(sid);
+		} catch (Exception e) {
+			return null;
+		}
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		QuestionSet result = (QuestionSet) session.createQuery("from QuestionSet where id = ?")
+			.setInteger(0, id)
+			.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return result;
+	}
 	
 	@Id
 	@GeneratedValue(generator="increment")

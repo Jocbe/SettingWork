@@ -1,11 +1,11 @@
 package org.example.models;
 
-import java.util.Set;
-import java.util.HashSet;
-import javax.persistence.Id;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.OneToMany;
+
+import org.example.SessionFactoryManager;
+import org.hibernate.Session;
 
 
 @Entity
@@ -23,6 +23,16 @@ public class User {
 		id = i;
 	}
 	
+	public static User fromString(String crsid) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		User result = (User) session.createQuery("from User where id = ?")
+			.setString(0, crsid)
+			.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return result;
+	}
 	
 	@Id
 	public String getId() {return id;}

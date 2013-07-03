@@ -1,14 +1,10 @@
 package org.example.models;
 
-import java.util.List;
-import java.util.LinkedList;
-import javax.persistence.Id;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
-import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -17,9 +13,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Table( name = "QUESTIONS" )
 public class Question {
 	
-	private QuestionSet parentSet;
+	@FormParam("parentSet") private QuestionSet parentSet;
 	@FormParam("content") private String content;
-	private User author;
+	@FormParam("author") private User author;
 	@FormParam("id") private int id;
 	
 	public Question() {}
