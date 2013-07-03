@@ -1,0 +1,33 @@
+{namespace view.user}
+
+/**
+ * This will display a list of all users, which you can then edit, delete or add a new user
+ * @param users List of all users
+ */
+{template .listall}
+	{call shared.header /}
+	<h1>Users currently in the database</h1>
+	<p><a href=/user/new>New User</a></p>
+	<table>
+		<tr bgcolor=#d0d0d0>
+			<td>Username</td>
+			<td>CRSID</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>
+		{foreach $user in $users}
+			<tr bgcolor=#e0e0e0>
+				<td>{$user.name}</td>
+				<td>{$user.id}</td>
+				<td><a href=/user/{$user.id}/edit>
+					<img src=http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-10/512/Pencil-icon.png width="25">
+				</a></td>
+				<td><a href=#>
+					<img src=http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-edit-delete-icon.png width="25">
+				</a></td>
+			</tr>
+		{/foreach}
+	</table>
+	
+	{call shared.footer /}
+{/template}

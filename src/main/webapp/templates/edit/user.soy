@@ -1,1 +1,40 @@
 {namespace edit}
+
+/**
+ * This is the raw form to edit users
+ * @param? userID This is the CRSID of the user
+ * @param? userName This is the user's full name
+ */
+{template .userEditForm}
+	<form method="post" action="/user/update/{$userID}">
+		{if not $userID}
+			CRSID: <input type="text" name="id" /><br>
+			Full name: <input type="text" name="name" />
+		{else}
+			<input type="hidden" name="id" value={$userID} />
+			Full name: <input type="text" name="name" value={$userName} />
+		{/if}
+	</form>
+{/template}
+
+/**
+ * This will create a new user
+ */
+{template .newUser}
+	{call shared.header /}
+	<h1>Add a new user</h1>
+	{call .userEditForm /}
+	{call shared.footer /}
+{/template}
+
+/**
+ * One can edit an existing user with this form
+ * @param userID
+ * @param userName
+ */
+{template .user}
+	{call shared.header /}
+	<h1>Edit user details of user associated with {$userID}</h1>
+	{call .userEditForm data="all" /}
+	{call shared.footer /}
+{/template}
