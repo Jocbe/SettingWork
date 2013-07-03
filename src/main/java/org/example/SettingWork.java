@@ -8,6 +8,7 @@ import javax.ws.rs.core.Application;
 import org.example.controllers.MainController;
 import org.example.controllers.QuestionController;
 import org.example.controllers.QuestionSetController;
+import org.example.controllers.UserQuestionsViewController;
 import org.example.controllers.UserSetsViewController;
 import org.example.controllers.UserSummaryController;
 
@@ -25,6 +26,7 @@ public class SettingWork extends Application {
 		myServices.add(QuestionSetController.class);
 		myServices.add(MainController.class);
 		myServices.add(UserSummaryController.class);
+		myServices.add(UserQuestionsViewController.class);
 
 		// Add Htmleasy Providers
 		myServices.addAll(HtmleasyProviders.getClasses());
