@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import org.example.SessionFactoryManager;
 import org.example.models.User;
 import org.hibernate.Session;
+import org.jboss.resteasy.annotations.Form;
 
 import com.google.common.collect.ImmutableMap;
+import com.googlecode.htmleasy.RedirectException;
 import com.googlecode.htmleasy.ViewWith;
 
 @Path("/user")
@@ -37,6 +41,68 @@ public class UserEditController {
 		return ImmutableMap.of();
 	}
 	
+	@POST @Path("/add")
+	@ViewWith("/soy/view.listall")
+	public void addUser(@Form User u) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		User existingUser = (User)session.createQuery("from User where id = ?")
+			.setString(0, u.getId())
+			.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		// If user already exists do nothing
+		// TODO: some kind of error message
+		if(existingUser != null) {
+			return;
+		}
+		
+		session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		session.save(u);
+		session.getTransaction().commit();
+		session.close();
+		
+		throw new RedirectException("/user");
+		
+		
+	}
 	
+	@POST @Path("/update")
+	public void updateUser(@Form User u) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		session.update(u);
+		session.getTransaction().commit();
+		session.close();
+		
+		throw new RedirectException("/user");
+		
+	}
+	
+	@GET @Path("/edit/{uID}")
+	@ViewWith("/soy/edit.user")
+	public User viewEditUser(@PathParam("uID") String uID) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		User u = (User)session.createQuery("from User where id = ?")
+			.setString(0, uID)
+			.uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		
+		return u;
+	}
+	
+	@GET @Path("/delete/{uID}")
+	public void deleteUser(@PathParam("uID") String uID) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		//TODO: find more elegant version for the line following
+		session.delete(session.createQuery("from User where id = ?").setString(0, uID).uniqueResult());
+		session.getTransaction().commit();
+		session.close();
+		throw new RedirectException("/user");
+	}
 }
 
