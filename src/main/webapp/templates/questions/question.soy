@@ -39,7 +39,10 @@
 		<h1>Adding new question</h1>
 	{/if}
 <form method="post" action="/question/{$id}">
-        <input type="text" name="content" value="{$content}"/>
+        <textarea name="content" rows="25" cols="80">
+        	{$content}
+        </textarea>
+        <br />
         <input type="hidden" name="id" value="{$id}" />
         <input type="submit"/>
 </form>
