@@ -11,6 +11,7 @@
 	{foreach $question in $questions}
 		{call shared.question.single data="$question" /}
 	{/foreach}
+	<p><a href="/question/add/{$id}">Add question</a></p>
 	<p><a href="/set/{$id}/edit">Edit set</a></p>
 {/template}
 
