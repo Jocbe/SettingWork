@@ -35,6 +35,12 @@ public class QuestionSetController {
 		
 		return ImmutableMap.of("sets", sets);
 	}
+	
+	@GET @Path("/e404")
+	@ViewWith("/soy/main.e404")
+	public Map noSuchSet() {
+		return ImmutableMap.of("what", "Question set");
+	}
 
 	@GET @Path("/{qsID}")
 	@ViewWith("/soy/view.set")
@@ -43,22 +49,27 @@ public class QuestionSetController {
 		session.beginTransaction();
 		List questions = session.createQuery(
 				"from Question where parentSet = ?")
-				.setInteger(0, qsID).list();
+				.setInteger(0, qsID)
+				.list();
 		
-		QuestionSet questionSet = ((QuestionSet)session.createQuery(
+		QuestionSet questionSet = (QuestionSet) session.createQuery(
 				"from QuestionSet where id = ?")
 				.setInteger(0, qsID)
-				.uniqueResult());
+				.uniqueResult();
 		session.getTransaction().commit();
 		session.close();
 		
 		if (questionSet == null) {
-			return ImmutableMap.of("name", "### Invalid question set ID! ###", "questions", null);
+			System.out.println("@@@@@@@@@@@@@@@@@@");
+			throw new RedirectException("/set/e404");
+		} else {
+			System.out.println("###################");
+			return ImmutableMap.of(
+					"name", questionSet.getName(),
+					"questions", questions,
+					"id", questionSet.getId());
+					//"owner", questionSet.getOwner());
 		}
-		
-		String name = questionSet.getName();
-		return ImmutableMap.of("name", name, "questions", questions, "id", qsID, "owner", questionSet.getOwner());
-		
 	}
 	
 	@GET @Path("/{id}/edit")
@@ -72,7 +83,12 @@ public class QuestionSetController {
 				.uniqueResult();
 		session.getTransaction().commit();
 		session.close();
-		return result;
+		
+		if (result == null) {
+			throw new RedirectException("/set/e404");
+		} else {
+			return result;
+		}
 	}
 	
 	@GET @Path("/add")
