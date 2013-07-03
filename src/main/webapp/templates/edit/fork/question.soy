@@ -7,6 +7,7 @@
  */
 {template .question}
 	{call shared.header /}
+	<h1>Forking a question</h1>
 	<form method="post" action="/question/{$id}/fork/save">
 		<select name="id">
 			{foreach $set in $sets}

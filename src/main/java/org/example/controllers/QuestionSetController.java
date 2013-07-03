@@ -104,20 +104,4 @@ public class QuestionSetController {
 		session.close();
 		throw new RedirectException("/set/" + s.getId());
 	}
-	
-	private void addDummyQuestionSet(String name) {
-		User u = new User("Bob", "bbb123");
-		QuestionSet q = new QuestionSet(u);
-		q.setName(name);
-		
-		Session session = SessionFactoryManager.getInstance().openSession();
-		session.beginTransaction();
-		session.saveOrUpdate(u);
-		session.saveOrUpdate(q);
-		session.saveOrUpdate(new Question(name+"'s question 1", q, u));
-		session.saveOrUpdate(new Question(name+"'s question 2", q, u));
-		session.saveOrUpdate(new Question(name+"'s question 3", q, u));
-		session.getTransaction().commit();
-		session.close();
-	}
 }

@@ -7,6 +7,11 @@
  */
 {template .set}
 	{call shared.header /}
+	{if $id != 0}
+		<h1>Editing set {$id}</h1>
+	{else}
+		<h1>Adding new set</h1>
+	{/if}
 	<form method="post" action="/set/0">
         <input type="text" name="name" value="{$name}" />
         <input type="hidden" name="id" value="{$id}" />
