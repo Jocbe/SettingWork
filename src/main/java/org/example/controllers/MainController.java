@@ -17,39 +17,40 @@ import com.googlecode.htmleasy.ViewWith;
 
 @Path("/")
 public class MainController {
+	static boolean demoDataAdded = false;
 	
 	@GET 
 	@Path("/")
 	@ViewWith("/soy/main.index")
 	public Map<String, ?> showIndex() {
+		if (demoDataAdded == false)
+			addDemoData();
 		return ImmutableMap.of();
 	}
 	
 	@GET @Path("/addDemoData")
 	public void addDemoData() {
-		User a = new User("Bob", "bbb123");
-		User b = new User("Alice", "aaa456");
-		
-		QuestionSet p = new QuestionSet(a, "Bobbies first set");
-		QuestionSet q = new QuestionSet(b, "Alice is cool");
-		QuestionSet r = new QuestionSet(a, "This is his 2nd");
-		
-		Question q1 = new Question("content question", p, b);
-		Question q2 = new Question("How are you", p, a);
-		
-		
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
+		User b = new User("Bob", "bbb12");
+		User a = new User("Alice", "aaa98");
+
+		QuestionSet p = new QuestionSet(a, "Foundations of Computer Science example sheet");
+
+		Question q1 = new Question("Write a function [square n], that calculates square of n.", p, a);
+		Question q2 = new Question("Write a function [factorial n], that calculates factorial of n.", p, a);
+		Question q3 = new Question("Write a function [power n k], that calculates k-th power of n.", p, a);
+
 		session.save(a);
 		session.save(b);
 		session.save(p);
-		session.save(q);
-		session.save(r);
 		session.save(q1);
 		session.save(q2);
+		session.save(q3);
+
 		session.getTransaction().commit();
 		session.close();
-		throw new RedirectException("/");
+		demoDataAdded = true;
 	}
 
 }
