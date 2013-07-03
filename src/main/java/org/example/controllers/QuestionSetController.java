@@ -65,7 +65,8 @@ public class QuestionSetController {
 			return ImmutableMap.of(
 					"name", questionSet.getName(),
 					"questions", questions,
-					"id", questionSet.getId());
+					"id", questionSet.getId(),
+					"owner", questionSet.getOwner());
 		}
 	}
 	
@@ -92,6 +93,12 @@ public class QuestionSetController {
 	@ViewWith("/soy/edit.set")
 	public QuestionSet addQuestionSet() {
 		return new QuestionSet();
+	}
+	
+	@GET @Path("/add/{userid}")
+	@ViewWith("/soy/edit.set")
+	public QuestionSet addQuestionSet(@PathParam("userid") String userid) {
+		return new QuestionSet(User.fromString(userid));
 	}
 	
 	@POST @Path("/{id}")

@@ -5,10 +5,11 @@
  * @param id
  * @param name
  * @param questions
+ * @param owner
  */
 {template .set}
 	{call shared.header /}
 	{call shared.set.single data="all" /}
-	<p><a href="/set/">Back to set list</a></p>
+	<p><a href="/user/{$owner.id}/sets">Back to user's set list</a></p>
 	{call shared.footer /}
 {/template}

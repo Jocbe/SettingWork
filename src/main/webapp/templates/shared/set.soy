@@ -5,11 +5,11 @@
  * @param id
  * @param name
  * @param questions
- * param owner
+ * @param owner
  */
 {template .single}
 	<h1>Set &quot;{$name}&quot;</h1>
-	//<h2>owner: <a href="/user/{$owner.id}">{$owner.name}</a></h2>
+	<h2>owner: <a href="/user/{$owner.id}">{$owner.name}</a></h2>
 	{foreach $question in $questions}
 		{call shared.question.single data="$question" /}
 	{/foreach}

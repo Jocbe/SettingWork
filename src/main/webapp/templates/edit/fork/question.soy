@@ -11,7 +11,7 @@
 	<form method="post" action="/question/{$id}/fork/save">
 		<select name="id">
 			{foreach $set in $sets}
-				<option value="{$set.id}">{$set.name}</option>
+				<option value="{$set.id}">&quot;{$set.name}&quot; by {$set.owner.name}</option>
 			{/foreach}
 		</select>
 		<input type="submit" />

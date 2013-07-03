@@ -17,7 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table( name = "QUESTIONSETS" )
 public class QuestionSet {
 	//private Set<Question> questions = new HashSet<Question>();
-	private User owner;
+	@FormParam("owner") private User owner;
 	@FormParam("id") private int id;
 	@FormParam("name") private String name;
 	
@@ -27,6 +27,7 @@ public class QuestionSet {
 	}
 	public QuestionSet(User o) {
 		owner = o;
+		name = "Name";
 	}
 	public QuestionSet(User o, String n) {
 		owner = o;

@@ -4,6 +4,7 @@
  * Form for editing a question set
  * @param id
  * @param name
+ * @param owner
  */
 {template .set}
 	{call shared.header /}
@@ -15,6 +16,7 @@
 	<form method="post" action="/set/0">
         <input type="text" name="name" value="{$name}" />
         <input type="hidden" name="id" value="{$id}" />
+        <input type="hidden" name="owner" value="{$owner.id}" />
         <input type="submit"/>
 	</form>
 	{call shared.footer /}

@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import org.example.SessionFactoryManager;
 import org.example.models.Question;
 import org.example.models.QuestionSet;
+import org.example.models.User;
 import org.hibernate.Session;
 import org.jboss.resteasy.annotations.Form;
 
@@ -96,7 +97,9 @@ public class QuestionController {
 	@Path("/add/{parentID}")
 	@ViewWith("/soy/edit.question")
 	public Question addQuestion(@PathParam("parentID") int parentID) {
-		return new Question("Content", QuestionSet.fromString(""+parentID), null);
+		QuestionSet parentSet = QuestionSet.fromString(parentID+"");
+		User author = parentSet.getOwner();
+		return new Question("Content", parentSet, author);
 	}
 
 	@POST
