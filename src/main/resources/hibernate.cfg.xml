@@ -51,9 +51,9 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping class="org.example.Question" />
-        <mapping class="org.example.QuestionSet" />
-        <mapping class="org.example.User" />
+        <mapping class="org.example.models.Question" />
+        <mapping class="org.example.models.QuestionSet" />
+        <mapping class="org.example.models.User" />
 
     </session-factory>
 

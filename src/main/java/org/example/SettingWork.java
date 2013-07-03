@@ -2,7 +2,14 @@ package org.example;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.ws.rs.core.Application;
+
+import org.example.controllers.MainController;
+import org.example.controllers.QuestionController;
+import org.example.controllers.QuestionSetController;
+import org.example.controllers.UserController;
+
 import com.googlecode.htmleasy.HtmleasyProviders;
 
 public class SettingWork extends Application {
