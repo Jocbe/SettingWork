@@ -3,6 +3,7 @@ package org.example.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 
 import org.example.SessionFactoryManager;
 import org.hibernate.Session;
@@ -11,10 +12,10 @@ import org.hibernate.Session;
 @Entity
 @Table( name = "USERS" )
 public class User {
-	private String name;
+	@FormParam("name") private String name;
 	/*private Set<QuestionSet> questionSets = new HashSet<QuestionSet>();
 	private Set<Question> questions = new HashSet<Question>();*/
-	private String id;
+	@FormParam("id") private String id;
 	
 	public User() {}
 	

@@ -2,11 +2,11 @@
 
 /**
  * This is the raw form to edit users
- * @param? userID This is the CRSID of the user
- * @param? userName This is the user's full name
+ * @param? id This is the CRSID of the user
+ * @param? name This is the user's full name
  */
 {template .usereditform}
-	{if not $userID}
+	{if not $id}
 		<form method="post" action="/user/add">
 			<table>
 				<tr>
@@ -16,12 +16,16 @@
 					<td>Full name:</td>
 					<td><input type="text" name="name" /></td>
 				</tr>
+				<tr><td></td>
+					<td><input type="submit" /></td>
+				</tr>
 			</table>
 		</form>
 	{else}
-		<form method="post" action="/user/update/{$userID}">
-			<input type="hidden" name="id" value={$userID} />
-			Full name: <input type="text" name="name" value={$userName} />
+		<form method="post" action="/user/update">
+			<input type="hidden" name="id" value="{$id}" />
+			Full name: <input type="text" name="name" value="{$name}" /><br>
+			<input type="submit" />
 		</form>
 	{/if}
 {/template}
@@ -38,12 +42,12 @@
 
 /**
  * One can edit an existing user with this form
- * @param userID
- * @param userName
+ * @param id the user ID
+ * @param name the user name
  */
 {template .user}
 	{call shared.header /}
-	<h1>Edit user details of user associated with {$userID}</h1>
+	<h1>Edit user details of user associated with {$id}</h1>
 	{call .usereditform data="all" /}
 	{call shared.footer /}
 {/template}
