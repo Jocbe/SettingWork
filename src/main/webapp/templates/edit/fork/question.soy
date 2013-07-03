@@ -1,0 +1,19 @@
+{namespace edit.fork}
+
+/**
+ * Form to handle forking a question to another set
+ * @param id
+ * @param sets
+ */
+{template .question}
+	{call shared.header /}
+	<form method="post" action="/question/{$id}/fork/save">
+		<select name="id">
+			{foreach $set in $sets}
+				<option value="{$set.id}">{$set.name}</option>
+			{/foreach}
+		</select>
+		<input type="submit" />
+	</form>
+	{call shared.footer /}
+{/template}

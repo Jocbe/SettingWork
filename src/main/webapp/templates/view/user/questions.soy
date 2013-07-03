@@ -2,6 +2,7 @@
 
 /**
  * Will display the entire page of a user's questions
+ * @param id
  * @param name Username
  * @param questions List of questions
 */
@@ -11,6 +12,7 @@
 	{call shared.question.multiple}
 		{param questions: $questions /}
 	{/call}
+	<a href="/user/{$id}">Back to user profile</a>
 	{call shared.footer /}
 {/template}
 	

@@ -37,7 +37,10 @@ public class UserSetsViewController {
 			return ImmutableMap.of("name", "USER DOES NOT EXIST", "questionsets", null);
 		}
 		
-		return ImmutableMap.of("name", user.getName(), "sets", questionSets);
+		return ImmutableMap.of(
+				"name", user.getName(),
+				"sets", questionSets,
+				"id", user.getId());
 		
 	}
 }

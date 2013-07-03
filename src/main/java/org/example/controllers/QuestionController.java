@@ -110,4 +110,34 @@ public class QuestionController {
 		session.close();
 		throw new RedirectException("/set/" + q.getParentSet().getId());
 	}
+	
+	@GET
+	@Path("/{id}/fork")
+	@ViewWith("/soy/edit.fork.question")
+	public Map forkQuestion(@PathParam("id") int id) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		List sets = session.createQuery("from QuestionSet")
+			.list();
+		session.getTransaction().commit();
+		session.close();
+		return ImmutableMap.of(
+				"id", id,
+				"sets", sets);
+	}
+	
+	@POST @GET
+	@Path("/{id}/fork/save")
+	public void forkQuestion(@PathParam("id") int id, @Form QuestionSet set) {
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		Question old = (Question) session.createQuery(
+				"from Question where id=?")
+				.setInteger(0, id)
+				.uniqueResult();
+		session.save(new Question(old.getContent(), set, old.getAuthor()));
+		session.getTransaction().commit();
+		session.close();
+		throw new RedirectException("/set/"+set.getId());
+	}
 }

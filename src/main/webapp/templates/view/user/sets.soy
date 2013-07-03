@@ -2,6 +2,7 @@
 
 /**
  * Displays a full page with a given user
+ * @param id
  * @param name
  * @param sets
  */
@@ -11,5 +12,6 @@
 	{call shared.set.multiple}
 		{param sets: $sets /}
 	{/call}
+	<a href="/user/{$id}">Back to user profile</a>
 	{call shared.footer /}
 {/template}

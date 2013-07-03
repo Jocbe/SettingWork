@@ -32,6 +32,9 @@ public class UserQuestionsViewController {
 		session.getTransaction().commit();
 		session.close();
 		
-		return ImmutableMap.of("name", name, "questions", questions);
+		return ImmutableMap.of(
+				"name", name,
+				"questions", questions,
+				"id", uID);
 	}
 }
