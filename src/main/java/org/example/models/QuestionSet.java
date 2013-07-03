@@ -22,7 +22,9 @@ public class QuestionSet {
 	@FormParam("name") private String name;
 	
 	
-	public QuestionSet() {}
+	public QuestionSet() {
+		name = "Name";
+	}
 	public QuestionSet(User o) {
 		owner = o;
 	}
