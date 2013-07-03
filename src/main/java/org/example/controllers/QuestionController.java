@@ -34,14 +34,14 @@ public class QuestionController {
 
 	@GET
 	@Path("/e404")
-	@ViewWith("/soy/questions.nosuchquestion")
-	public Question noSuchQuestion() {
-		return new Question();
+	@ViewWith("/soy/main.e404")
+	public Map noSuchQuestion() {
+		return ImmutableMap.of();
 	}
 
 	@GET
 	@Path("/{questionID}")
-	@ViewWith("/soy/questions.questionview")
+	@ViewWith("/soy/view.question")
 	public Question showQuestion(@PathParam("questionID") int questionID) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
@@ -60,7 +60,7 @@ public class QuestionController {
 
 	@GET
 	@Path("/{questionID}/edit")
-	@ViewWith("/soy/questions.questionedit")
+	@ViewWith("/soy/edit.question")
 	public Question editQuestion(@PathParam("questionID") int questionID) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
@@ -80,14 +80,14 @@ public class QuestionController {
 
 	@GET
 	@Path("/add")
-	@ViewWith("/soy/questions.questionedit")
+	@ViewWith("/soy/edit.question")
 	public Question addQuestion() {
 		return new Question("Content", null, null);
 	}
 
 	@POST
 	@Path("/{questionID}")
-	@ViewWith("/soy/questions.questionview")
+	@ViewWith("/soy/view.question")
 	public void saveQuestion(@Form Question q) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();

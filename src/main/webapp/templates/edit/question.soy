@@ -1,0 +1,38 @@
+{namespace edit}
+
+/** 
+ * Displays a question edition form
+ * @param id
+ * @param content
+ * @param author
+ * @param parentSet
+ */
+{template .question}
+	{call shared.header /}
+	{if $id != 0}
+		<h1>Editing question {$id}</h1>
+	{else}
+		<h1>Adding new question</h1>
+	{/if}
+<form method="post" action="/question/{$id}">
+        <textarea name="content" rows="25" cols="80">
+        	{$content}
+        </textarea>
+        <br />
+        <input type="hidden" name="id" value="{$id}" />
+        <input type="hidden" name="author" value="
+        
+        {if $author != null}
+        	{$author.id}
+        {/if}
+        " />
+        
+        <input type="hidden" name="parentSet" value="
+        {if $parentSet != null}
+        	{$parentSet.id}
+        {/if}
+        " />
+        <input type="submit"/>
+</form>
+	{call shared.footer /}
+{/template}

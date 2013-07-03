@@ -1,0 +1,13 @@
+{namespace view}
+
+/**
+ * Displays a full page with a given questionset
+ * @param name
+ * @param questions
+ */
+{template .set}
+	{call shared.header /}
+	<h1>Set &quot;{$name}&quot;</h1>
+	{call shared.question.multiple data="all" /}
+	{call shared.footer /}
+{/template}

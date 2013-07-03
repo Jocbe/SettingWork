@@ -1,0 +1,16 @@
+{namespace view.user}
+
+/**
+ * Will display the entire page of a user's questions
+ * @param name Username
+ * @param questions List of questions
+*/
+{template .questions}
+	{call shared.header /}
+	<h1>All questions of user {$name}</h1>
+	{call shared.question.multiple}
+		{param questions: $questions /}
+	{/call}
+	{call shared.footer /}
+{/template}
+	

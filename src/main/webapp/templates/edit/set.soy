@@ -1,0 +1,16 @@
+{namespace edit}
+
+/**
+ * Form for editing a question set
+ * @param id
+ * @param name
+ */
+{template .set}
+	{call shared.header /}
+	<form method="post" action="/set/{$id}">
+        <input type="text" name="name" value="{$name}" />
+        <input type="hidden" name="id" value="{$id}" />
+        <input type="submit"/>
+	</form>
+	{call shared.footer /}
+{/template}

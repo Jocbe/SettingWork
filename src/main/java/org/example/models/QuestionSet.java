@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 
 import org.example.SessionFactoryManager;
 import org.hibernate.Session;
@@ -17,8 +18,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class QuestionSet {
 	//private Set<Question> questions = new HashSet<Question>();
 	private User owner;
-	private int id;
-	private String name;
+	@FormParam("id") private int id;
+	@FormParam("name") private String name;
 	
 	
 	public QuestionSet() {}

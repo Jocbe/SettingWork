@@ -1,0 +1,25 @@
+{namespace shared.set}
+
+/**
+ * Displays a single set
+ * @param name
+ * @param questions
+ */
+{template .single}
+	<h1>Set &quot;{$name}&quot;</h1>
+	{foreach $question in $questions}
+		{call shared.question.single data="$question" /}
+	{/foreach}
+{/template}
+
+/**
+ * Displays a list of sets
+ * @param sets
+ */
+{template .multiple}
+	<ul>
+	{foreach $set in $sets}
+		<li><a href="/set/{$set.id}">{$set.name}</a></li>
+	{/foreach}
+	</ul>
+{/template}

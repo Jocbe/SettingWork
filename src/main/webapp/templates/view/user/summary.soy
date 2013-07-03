@@ -1,0 +1,22 @@
+{namespace view.user}
+
+/**
+* Displays entire page for the user summary
+* @param name the user name
+* @param id the user CRSID
+*/
+{template .summary}
+	{call shared.header /}
+	<h1>User page for {$name}</h1>
+	<p>Your CRSID: {$id}</p>
+	<table>
+		<tr><td bgcolor="#d0d0d0"><b>Tool Box</b></td><tr>
+		<tr><td bgcolor="#e0e0e0">
+			<ul>
+				<li><a href=/user/{$id}/sets>View question sets</a></li>
+				<li><a href=/user/{$id}/questions>View all questions</a></li>
+			</ul>
+		</td></tr>
+	</table>
+	{call shared.footer /}
+{/template}

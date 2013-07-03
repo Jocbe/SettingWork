@@ -1,23 +1,12 @@
 {namespace questions}
-/**
-* Displays all question in a given questionset
-* @param name Name of the questionset.
-* @param questions List of question objects belonging to this questionset
-*/
-{template .questionset}
-	<h1>Question set '{$name}'</h1>
-	{foreach $question in $questions}
-		{call questions.question data="$question" /}
-	{/foreach}
-{/template}
 
 /**
- * Displays a full page with a given questionset
- * @param name
- * @param questions
+ * Template of a page with all question sets
+ * @param sets
  */
-{template .questionsetview}
+{template .allquestionsets}
 	{call shared.header /}
-	{call .questionset data="all" /}
+	<h1>All sets</h1>
+	{call shared.set.multiple data="all" /}
 	{call shared.footer /}
 {/template}

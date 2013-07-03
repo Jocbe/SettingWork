@@ -1,91 +1,4 @@
 {namespace questions}
-/**
- * Displays a single question
- * @param id
- * @param content String holding content of the question.
- * @param author
- * @param parentSet
- */
-{template .question}
-<article>
-	<p class="questioncontent">{$content}</p>
-	<p class="questionauthor">
-	{if $author == null}
-		author unknown
-	{else}
-		author: <a href="/user/{$author.id}">{$author.name}</a>
-	{/if}
-	,&ensp;
-	
-	{if $parentSet != null}
-		set: <a href="/set/{$parentSet.id}">&quot;{$parentSet.name}&quot;</a>,&ensp;
-	{/if}
-	
-	
-	<a href="/question/{$id}/edit">edit</a></p>
-</article>
-{/template}
-
-/**
- * Displays a full page with one question
- * @param id
- * @param content
- * @param author
- * @param parentSet
- */
-{template .questionview}
-	{call shared.header /}
-	<h1>Question view</h1>
-	{call .question data="all" /}
-	<p><a href="/question">Back to question list</a></p>
-	{call shared.footer /}
-{/template}
-
-/** 
- * Displays a question edition form
- * @param id
- * @param content
- * @param author
- * @param parentSet
- */
-{template .questionedit}
-	{call shared.header /}
-	{if $id != 0}
-		<h1>Editing question {$id}</h1>
-	{else}
-		<h1>Adding new question</h1>
-	{/if}
-<form method="post" action="/question/{$id}">
-        <textarea name="content" rows="25" cols="80">
-        	{$content}
-        </textarea>
-        <br />
-        <input type="hidden" name="id" value="{$id}" />
-        <input type="hidden" name="author" value="
-        {if $author != null}
-        	{$author.id}
-        {/if}
-        " />
-        
-        <input type="hidden" name="parentSet" value="
-        {if $parentSet != null}
-        	{$parentSet.id}
-        {/if}
-        " />
-        
-        <input type="submit"/>
-</form>
-	{call shared.footer /}
-{/template}
-
-/**
- * No such question, no parameters
- */
-{template .nosuchquestion}
-	{call shared.header /}
-	<p class="error">No such question</p>
-	{call shared.footer /}
-{/template}
 
 /**
  * All questions
@@ -94,9 +7,9 @@
 {template .allquestions}
 	{call shared.header /}
 	<h1>All questions</h1>
-	{foreach $question in $questions}
-		{call .question data="$question" /}
-	{/foreach}
+	
+	{call shared.question.multiple data="all" /}
+	
 	<p><a href="/question/add">Add new</a></p>
 	{call shared.footer /}
 {/template}

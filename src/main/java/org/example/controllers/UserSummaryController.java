@@ -1,7 +1,5 @@
 package org.example.controllers;
 
-import java.util.Map;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -16,7 +14,7 @@ import com.googlecode.htmleasy.ViewWith;
 public class UserSummaryController {
 	
 	@GET @Path("/{uID}")
-	@ViewWith("/soy/user.summaryview")
+	@ViewWith("/soy/view.user.summary")
 	public User showUserSummary(@PathParam("uID") String uID) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();

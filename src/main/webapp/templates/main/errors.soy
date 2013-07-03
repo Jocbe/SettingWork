@@ -1,0 +1,14 @@
+{namespace main}
+
+/**
+ * Shows 404 message
+ * @param? what
+ */
+{template .e404}
+	<h1>Error 404</h1>
+	{if not $what}
+		<p>Page not found</p>
+	{else}
+		<p>{$what} not found</p>
+	{/if}
+{/template}

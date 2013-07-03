@@ -1,0 +1,37 @@
+{namespace shared.question}
+/**
+ * Displays a single question
+ * @param id
+ * @param content String holding content of the question.
+ * @param author
+ * @param parentSet
+ */
+{template .single}
+<article>
+	<p class="questioncontent">{$content}</p>
+	<p class="questionauthor">
+	{if $author == null}
+		author unknown
+	{else}
+		author: <a href="/user/{$author.id}">{$author.name}</a>
+	{/if}
+	,&ensp;
+	
+	{if $parentSet != null}
+		set: <a href="/set/{$parentSet.id}">&quot;{$parentSet.name}&quot;</a>,&ensp;
+	{/if}
+	
+	
+	<a href="/question/{$id}/edit">edit</a></p>
+</article>
+{/template}
+
+/**
+ * Displays a list of questions
+ * @param questions
+ */
+{template .multiple}
+	{foreach $question in $questions}
+		{call .single data="$question" /}
+	{/foreach}
+{/template}

@@ -18,7 +18,7 @@ import org.hibernate.Session;
 public class UserSetsViewController {
 	
 	@GET @Path("/{uID}/sets")
-	@ViewWith("/soy/user.setsview")
+	@ViewWith("/soy/view.user.sets")
 	public Map showQuestionSets(@PathParam("uID") String uID) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
@@ -37,7 +37,7 @@ public class UserSetsViewController {
 			return ImmutableMap.of("name", "USER DOES NOT EXIST", "questionsets", null);
 		}
 		
-		return ImmutableMap.of("name", user.getName(), "questionsets", questionSets);
+		return ImmutableMap.of("name", user.getName(), "sets", questionSets);
 		
 	}
 }

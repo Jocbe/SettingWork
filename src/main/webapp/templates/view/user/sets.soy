@@ -1,0 +1,15 @@
+{namespace view.user}
+
+/**
+ * Displays a full page with a given user
+ * @param name
+ * @param sets
+ */
+{template .sets}
+	{call shared.header /}
+	<h1>User '{$name}'</h1>
+	{call shared.set.multiple}
+		{param sets: $sets /}
+	{/call}
+	{call shared.footer /}
+{/template}

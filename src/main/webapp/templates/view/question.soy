@@ -1,0 +1,16 @@
+{namespace view}
+
+/**
+ * Displays a full page with one question
+ * @param id
+ * @param content
+ * @param author
+ * @param parentSet
+ */
+{template .question}
+	{call shared.header /}
+	<h1>Question view</h1>
+	{call shared.question.single data="all" /}
+	<p><a href="/question">Back to question list</a></p>
+	{call shared.footer /}
+{/template}

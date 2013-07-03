@@ -18,7 +18,7 @@ import com.googlecode.htmleasy.ViewWith;
 public class UserQuestionsViewController {
 	
 	@GET @Path("/{uID}/questions")
-	@ViewWith("/soy/user.questionsview")
+	@ViewWith("/soy/view.user.questions")
 	public Map showQuestions(@PathParam("uID") String uID) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
