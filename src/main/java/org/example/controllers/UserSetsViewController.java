@@ -15,10 +15,10 @@ import org.example.models.User;
 import org.hibernate.Session;
 
 @Path("/user")
-public class UserController {
+public class UserSetsViewController {
 	
-	@GET @Path("/{uID}")
-	@ViewWith("/soy/questions.userview")
+	@GET @Path("/{uID}/sets")
+	@ViewWith("/soy/user.setsview")
 	public Map showQuestionSets(@PathParam("uID") String uID) {
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();

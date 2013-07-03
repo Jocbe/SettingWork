@@ -8,7 +8,8 @@ import javax.ws.rs.core.Application;
 import org.example.controllers.MainController;
 import org.example.controllers.QuestionController;
 import org.example.controllers.QuestionSetController;
-import org.example.controllers.UserController;
+import org.example.controllers.UserSetsViewController;
+import org.example.controllers.UserSummaryController;
 
 import com.googlecode.htmleasy.HtmleasyProviders;
 
@@ -20,9 +21,10 @@ public class SettingWork extends Application {
 
 		// Add my own JAX-RS annotated classes
 		myServices.add(QuestionController.class);
-		myServices.add(UserController.class);
+		myServices.add(UserSetsViewController.class);
 		myServices.add(QuestionSetController.class);
 		myServices.add(MainController.class);
+		myServices.add(UserSummaryController.class);
 
 		// Add Htmleasy Providers
 		myServices.addAll(HtmleasyProviders.getClasses());

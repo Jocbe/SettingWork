@@ -1,0 +1,30 @@
+{namespace user}
+/**
+* Displays some basic info about the user with links to the user-specific questions and sets pages
+* @param name the user's name
+* @param id the user's CRSID
+*/
+{template .info}
+	<h1>User page for {$name}</h1>
+	<p>Your CRSID: {$id}</p>
+	<table>
+		<tr><td bgcolor="#d0d0d0"><b>Tool Box</b></td><tr>
+		<tr><td bgcolor="#e0e0e0">
+			<ul>
+				<li><a href=/user/{$id}/sets>View question sets</a></li>
+				<li><a href=/user/{$id}/questions>View all questions</a></li>
+			</ul>
+		</td></tr>
+	</table>
+{/template}
+
+/**
+* Displays entire page for the user summary
+* @param name the user name
+* @param id the user CRSID
+*/
+{template .summaryview}
+	{call shared.header /}
+	{call .info data="all" /}
+	{call shared.footer /}
+{/template}

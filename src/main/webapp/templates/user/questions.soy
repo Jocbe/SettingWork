@@ -1,0 +1,24 @@
+{namespace user}
+/**
+ * Will display a collection of all questions of a user
+ * @param name is the username
+ * @param questions contains a list of all questions created by the user
+*/
+{template .questionlist}
+	<h1>All questions of user {$name}</h1>
+	{foreach $question in $questions}
+		{call questions.question data="$question" /}
+	{/foreach}
+{/template}
+
+/**
+ * Will display the entire page of a user's questions
+ * @param name Username
+ * @param questions List of questions
+*/
+{template .questionsview}
+	{call shared.header /}
+	{call .questionlist data="all" /}
+	{call shared.footer /}
+{/template}
+	

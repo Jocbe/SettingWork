@@ -1,10 +1,10 @@
-{namespace questions}
+{namespace user}
 /**
 * Displays names of the question sets given
 * @param name
 * @param questionsets A list of question sets
 */
-{template .user}
+{template .sets}
 	<h1>User '{$name}'</h1>
 	<ul>
 	{foreach $questionset in $questionsets}
@@ -20,8 +20,8 @@
  * @param name
  * @param questionsets
  */
-{template .userview}
+{template .setsview}
 	{call shared.header /}
-	{call .user data="all" /}
+	{call .sets data="all" /}
 	{call shared.footer /}
 {/template}
