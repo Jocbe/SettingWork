@@ -12,7 +12,7 @@ import javax.ws.rs.PathParam;
 
 import org.hibernate.Session;
 
-@Path("/qsets")
+@Path("/set")
 public class QuestionSetController {
 
 	@GET @Path("/{qsID}")
