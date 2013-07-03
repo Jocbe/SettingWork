@@ -83,7 +83,13 @@ public class QuestionController {
 	@Path("/add")
 	@ViewWith("/soy/edit.question")
 	public Question addQuestion() {
-		return new Question("Content", null, null);
+		Session session = SessionFactoryManager.getInstance().openSession();
+		session.beginTransaction();
+		QuestionSet s = new QuestionSet();
+		session.save(s);
+		session.getTransaction().commit();
+		session.close();
+		return new Question("Content", s, null);
 	}
 	
 	@GET
@@ -102,6 +108,6 @@ public class QuestionController {
 		session.saveOrUpdate(q);
 		session.getTransaction().commit();
 		session.close();
-		throw new RedirectException("/question/" + q.getId());
+		throw new RedirectException("/set/" + q.getParentSet().getId());
 	}
 }
