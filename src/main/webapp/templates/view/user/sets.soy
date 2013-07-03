@@ -7,11 +7,14 @@
  * @param sets
  */
 {template .sets}
-	{call shared.header /}
+	{call shared.header}
+		{param title: $name+'\'s sets' /}
+	{/call}
 	<h1>User '{$name}'</h1>
 	{call shared.set.multiple}
 		{param sets: $sets /}
 	{/call}
-	<a href="/user/{$id}">Back to user profile</a>
+	<p><a href="/set/add/{$id}">Add a new set</a></p>
+	<p><a href="/user/{$id}">Back to user profile</a></p>
 	{call shared.footer /}
 {/template}

@@ -8,7 +8,9 @@
  * @param owner
  */
 {template .set}
-	{call shared.header /}
+	{call shared.header}
+		{param title: $name /}
+	{/call}
 	{call shared.set.single data="all" /}
 	<p><a href="/user/{$owner.id}/sets">Back to user's set list</a></p>
 	{call shared.footer /}

@@ -5,7 +5,9 @@
  * @param questions
  */
 {template .allquestions}
-	{call shared.header /}
+	{call shared.header}
+		{param title: 'Question list' /}
+	{/call}
 	<h1>All questions</h1>
 	
 	{call shared.question.multiple data="all" /}

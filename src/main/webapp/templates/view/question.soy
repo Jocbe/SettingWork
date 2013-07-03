@@ -8,7 +8,9 @@
  * @param parentSet
  */
 {template .question}
-	{call shared.header /}
+	{call shared.header}
+		{param title: 'Question '+$id /}
+	{/call}
 	<h1>Question view</h1>
 	{call shared.question.single data="all" /}
 	<p><a href="/question">Back to question list</a></p>

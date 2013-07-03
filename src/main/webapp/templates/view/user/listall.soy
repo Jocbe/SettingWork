@@ -5,25 +5,27 @@
  * @param users List of all users
  */
 {template .listall}
-	{call shared.header /}
+	{call shared.header}
+		{param title: 'User list' /}
+	{/call}
 	<h1>Users currently in the database</h1>
 	<p><a href=/user/add>New User</a></p>
-	<table>
+	<table style="width: 60%;">
 		<tr bgcolor=#d0d0d0>
-			<td>Username</td>
-			<td>CRSID</td>
-			<td>Edit</td>
-			<td>Delete</td>
+			<td style="width: 70%;">Username</td>
+			<td style="width: 20%;">CRSID</td>
+			<td style="width: 5%;"></td>
+			<td style="width: 5%;"></td>
 		</tr>
 		{foreach $user in $users}
 			<tr bgcolor=#e0e0e0>
 				<td><a href="/user/{$user.id}">{$user.name}</a></td>
 				<td>{$user.id}</td>
-				<td><a href=/user/edit/{$user.id}>
-					<img src=http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-10/512/Pencil-icon.png width="25">
+				<td><a href="/user/edit/{$user.id}">
+					<img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-10/512/Pencil-icon.png" width="25">
 				</a></td>
 				<td><a href="/user/delete/{$user.id}">
-					<img src=http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-edit-delete-icon.png width="25">
+					<img src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-edit-delete-icon.png" width="25">
 				</a></td>
 			</tr>
 		{/foreach}

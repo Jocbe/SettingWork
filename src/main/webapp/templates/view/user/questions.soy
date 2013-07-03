@@ -7,7 +7,9 @@
  * @param questions List of questions
 */
 {template .questions}
-	{call shared.header /}
+	{call shared.header}
+		{param title: $name+'\'s questions' /}
+	{/call}
 	<h1>All questions of user {$name}</h1>
 	{call shared.question.multiple}
 		{param questions: $questions /}

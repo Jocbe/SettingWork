@@ -5,7 +5,9 @@
  * @param sets
  */
 {template .allquestionsets}
-	{call shared.header /}
+	{call shared.header}
+		{param title: 'Set list' /}
+	{/call}
 	<h1>All sets</h1>
 	{call shared.set.multiple data="all" /}
 	{call shared.footer /}
