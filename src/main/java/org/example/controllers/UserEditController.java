@@ -12,6 +12,8 @@ import org.example.SessionFactoryManager;
 import org.example.models.User;
 import org.hibernate.Session;
 import org.jboss.resteasy.annotations.Form;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableMap;
 import com.googlecode.htmleasy.RedirectException;
@@ -19,6 +21,9 @@ import com.googlecode.htmleasy.ViewWith;
 
 @Path("/user")
 public class UserEditController {
+	
+	//private static Logger log = LoggerFactory. //LoggerFactory.getLogger(UserEditController.class);
+	
 	
 	@GET @Path("/")
 	@ViewWith("/soy/view.user.listall")
@@ -44,6 +49,8 @@ public class UserEditController {
 	@POST @Path("/add")
 	@ViewWith("/soy/view.listall")
 	public void addUser(@Form User u) {
+		Logger log = LoggerFactory.getLogger(UserEditController.class);
+		log.info("Trying to add user " + u.getId() + "...");
 		Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		User existingUser = (User)session.createQuery("from User where id = ?")
@@ -54,6 +61,7 @@ public class UserEditController {
 		// If user already exists do nothing
 		// TODO: some kind of error message
 		if(existingUser != null) {
+			log.error("Couldn't add user " + u.getId() + ". User already exists.");
 			return;
 		}
 		
@@ -62,6 +70,8 @@ public class UserEditController {
 		session.save(u);
 		session.getTransaction().commit();
 		session.close();
+		
+		log.info("Successfully added user " + u.getId());
 		
 		throw new RedirectException("/user");
 		
