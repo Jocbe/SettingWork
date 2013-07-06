@@ -32,11 +32,26 @@
 
 /**
  * This will create a new user
+ * @param? id
+ * @param? name
  */
 {template .adduser}
 	{call shared.header /}
 	<h1>Add a new user</h1>
-	{call .usereditform /}
+	<form method="post" action="/user/add">
+		<table>
+			<tr>
+				<td>CRSID:</td>
+				<td><input type="text" name="id" {if $id}value={$id}{/if} /></td>
+			</tr><tr>
+				<td>Full name:</td>
+				<td><input type="text" name="name" {if $name}value={$name}{/if} /></td>
+			</tr>
+			<tr><td></td>
+				<td><input type="submit" /></td>
+			</tr>
+		</table>
+	</form>
 	{call shared.footer /}
 {/template}
 
@@ -48,6 +63,10 @@
 {template .user}
 	{call shared.header /}
 	<h1>Edit user details of user associated with {$id}</h1>
-	{call .usereditform data="all" /}
+	<form method="post" action="/user/update">
+		<input type="hidden" name="id" value="{$id}" />
+		Full name: <input type="text" name="name" value="{$name}" /><br>
+		<input type="submit" />
+	</form>
 	{call shared.footer /}
 {/template}
