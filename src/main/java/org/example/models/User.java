@@ -20,7 +20,6 @@ public class User {
 	private Set<Question> questions = new HashSet<Question>();*/
 	@FormParam("id") private String id;
 
-	@Context
 	static HttpServletRequest servletRequest;
 	
 	public User() {}
@@ -28,6 +27,10 @@ public class User {
 	public User(String n, String i) {
 		name = n;
 		id = i;
+	}
+	
+	public static void setHttpServletRequest(HttpServletRequest x){
+		servletRequest = x;
 	}
 	
 	public static User fromString(String crsid) {

@@ -3,10 +3,9 @@ package org.example;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Context;
 
+import org.example.controllers.LDAPController;
 import org.example.controllers.MainController;
 import org.example.controllers.QuestionController;
 import org.example.controllers.QuestionSetController;
@@ -31,6 +30,7 @@ public class SettingWork extends Application {
 		myServices.add(UserSummaryController.class);
 		myServices.add(UserQuestionsViewController.class);
 		myServices.add(UserEditController.class);
+		myServices.add(LDAPController.class);
 		
 		// Add Htmleasy Providers
 		myServices.addAll(HtmleasyProviders.getClasses());

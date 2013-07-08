@@ -107,6 +107,7 @@ public class QuestionSetController {
 	@GET @Path("/add/{userid}")
 	@ViewWith("/soy/edit.set")
 	public QuestionSet addQuestionSet(@PathParam("userid") String userid) {
+		User.setHttpServletRequest(servletRequest);
 		return new QuestionSet(User.fromString(userid));
 	}
 	

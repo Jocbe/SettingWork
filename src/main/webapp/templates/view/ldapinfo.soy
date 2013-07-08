@@ -1,0 +1,17 @@
+{namespace view}
+
+/**
+ * This will display some info obtained via LDAP about a given user
+ * @param userID
+ * @param name
+ * @param email
+ */
+{template .ldap}
+	{call shared.header}
+		{param title: 'User '+$userID /}
+	{/call}
+	CRSID: {$userID}<br>
+	Display name: {$name}<br>
+	Email: {$email}
+	{call shared.footer /}
+{/template}
