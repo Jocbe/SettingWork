@@ -7,11 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.core.Context;
 
-import org.example.SessionFactoryManager;
 import org.hibernate.Session;
 import org.hibernate.annotations.GenericGenerator;
+
+import uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter;
 
 @Entity
 @Table( name = "QUESTIONSETS" )
@@ -20,7 +23,9 @@ public class QuestionSet {
 	@FormParam("owner") private User owner;
 	@FormParam("id") private int id;
 	@FormParam("name") private String name;
-	
+
+	@Context
+	static	HttpServletRequest servletRequest;
 	
 	public QuestionSet() {
 		name = "Name";
@@ -42,7 +47,8 @@ public class QuestionSet {
 		} catch (Exception e) {
 			return null;
 		}
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		QuestionSet result = (QuestionSet) session.createQuery("from QuestionSet where id = ?")
 			.setInteger(0, id)

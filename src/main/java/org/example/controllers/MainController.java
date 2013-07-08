@@ -2,14 +2,17 @@ package org.example.controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 
-import org.example.SessionFactoryManager;
 import org.example.models.Question;
 import org.example.models.QuestionSet;
 import org.example.models.User;
 import org.hibernate.Session;
+
+import uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter;
 
 import com.google.common.collect.ImmutableMap;
 import com.googlecode.htmleasy.RedirectException;
@@ -17,6 +20,10 @@ import com.googlecode.htmleasy.ViewWith;
 
 @Path("/")
 public class MainController {
+	
+	@Context
+	HttpServletRequest servletRequest;
+	
 	static boolean demoDataAdded = false;
 	
 	@GET 
@@ -30,7 +37,8 @@ public class MainController {
 	
 	@GET @Path("/addDemoData")
 	public void addDemoData() {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
+		//Session session = SessionFactoryManager.getInstance().openSession();
 		session.beginTransaction();
 		User b = new User("Bob", "bbb12");
 		User a = new User("Alice", "aaa98");

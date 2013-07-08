@@ -3,17 +3,20 @@ package org.example.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
 
-import org.example.SessionFactoryManager;
 import org.example.models.User;
 import org.hibernate.Session;
 import org.jboss.resteasy.annotations.Form;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter;
 
 import com.google.common.collect.ImmutableMap;
 import com.googlecode.htmleasy.RedirectException;
@@ -23,12 +26,15 @@ import com.googlecode.htmleasy.ViewWith;
 public class UserEditController {
 	
 	//private static Logger log = LoggerFactory. //LoggerFactory.getLogger(UserEditController.class);
-	
+
+	@Context
+	HttpServletRequest servletRequest;
 	
 	@GET @Path("/")
 	@ViewWith("/soy/view.user.listall")
 	public Map viewEntireUserList() {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		
 		@SuppressWarnings("unchecked")
@@ -51,7 +57,8 @@ public class UserEditController {
 	public void addUser(@Form User u) {
 		Logger log = LoggerFactory.getLogger(UserEditController.class);
 		log.info("Trying to add user " + u.getId() + "...");
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		User existingUser = (User)session.createQuery("from User where id = ?")
 			.setString(0, u.getId())
@@ -65,7 +72,8 @@ public class UserEditController {
 			return;
 		}
 		
-		session = SessionFactoryManager.getInstance().openSession();
+		//session = SessionFactoryManager.getInstance().openSession();
+		session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		session.save(u);
 		session.getTransaction().commit();
@@ -80,7 +88,8 @@ public class UserEditController {
 	
 	@POST @Path("/update")
 	public void updateUser(@Form User u) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		session.update(u);
 		session.getTransaction().commit();
@@ -93,7 +102,8 @@ public class UserEditController {
 	@GET @Path("/edit/{uID}")
 	@ViewWith("/soy/edit.user")
 	public User viewEditUser(@PathParam("uID") String uID) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		User u = (User)session.createQuery("from User where id = ?")
 			.setString(0, uID)
@@ -106,7 +116,8 @@ public class UserEditController {
 	
 	@GET @Path("/delete/{uID}")
 	public void deleteUser(@PathParam("uID") String uID) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		//TODO: find more elegant version for the line following
 		session.delete(session.createQuery("from User where id = ?").setString(0, uID).uniqueResult());

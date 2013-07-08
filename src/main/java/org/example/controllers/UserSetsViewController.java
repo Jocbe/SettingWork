@@ -6,21 +6,28 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 import com.googlecode.htmleasy.ViewWith;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
 
-import org.example.SessionFactoryManager;
 import org.example.models.User;
 import org.hibernate.Session;
 
+import uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter;
+
 @Path("/user")
 public class UserSetsViewController {
+
+	@Context
+	HttpServletRequest servletRequest;
 	
 	@GET @Path("/{uID}/sets")
 	@ViewWith("/soy/view.user.sets")
 	public Map showQuestionSets(@PathParam("uID") String uID) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		User user = (User)session.createQuery(
 				"from User where id = ?")

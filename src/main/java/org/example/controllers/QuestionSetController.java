@@ -3,17 +3,20 @@ package org.example.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
 
-import org.example.SessionFactoryManager;
 import org.example.models.Question;
 import org.example.models.QuestionSet;
 import org.example.models.User;
 import org.hibernate.Session;
 import org.jboss.resteasy.annotations.Form;
+
+import uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter;
 
 import com.google.common.collect.ImmutableMap;
 import com.googlecode.htmleasy.RedirectException;
@@ -21,11 +24,15 @@ import com.googlecode.htmleasy.ViewWith;
 
 @Path("/set")
 public class QuestionSetController {
+
+	@Context
+	HttpServletRequest servletRequest;
 	
 	@GET @Path("/")
 	@ViewWith("/soy/questions.allquestionsets")
 	public Map allQuestionSets() {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		List sets = session.createQuery(
 				"from QuestionSet")
@@ -45,7 +52,8 @@ public class QuestionSetController {
 	@GET @Path("/{qsID}")
 	@ViewWith("/soy/view.set")
 	public Map showQuestionSet(@PathParam("qsID") int qsID) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		List questions = session.createQuery(
 				"from Question where parentSet = ?")
@@ -73,7 +81,8 @@ public class QuestionSetController {
 	@GET @Path("/{id}/edit")
 	@ViewWith("/soy/edit.set")
 	public QuestionSet editQuestionSet(@PathParam("id") int id) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		QuestionSet result = (QuestionSet) session.createQuery(
 				"from QuestionSet where id = ?")
@@ -104,7 +113,8 @@ public class QuestionSetController {
 	@POST @Path("/{id}")
 	@ViewWith("/soy/view.set")
 	public QuestionSet saveQuestionSet(@Form QuestionSet s) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		session.saveOrUpdate(s);
 		session.getTransaction().commit();

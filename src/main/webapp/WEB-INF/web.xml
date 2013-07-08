@@ -1,30 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<filter>
+		<filter-name>ravenFilter</filter-name>
+		<filter-class>uk.ac.cam.ucs.webauth.RavenFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>Hibernate</filter-name>
+		<filter-class>uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter</filter-class>
+	</filter>
 
 	<filter>
 		<filter-name>Htmleasy</filter-name>
-		<filter-class>
-			com.googlecode.htmleasy.HtmleasyFilterDispatcher
-		</filter-class>
+		<filter-class>com.googlecode.htmleasy.HtmleasyFilterDispatcher</filter-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
 			<param-value>org.example.SettingWork</param-value>
 		</init-param>
 	</filter>
-	
+
+	<filter-mapping>
+		<filter-name>ravenFilter</filter-name>
+		<url-pattern>/private</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>Hibernate</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<filter-mapping>
 		<filter-name>Htmleasy</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<servlet>
-	  <servlet-name>soy</servlet-name>
-    <servlet-class>com.papercut.silken.SilkenServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
+		<servlet-name>soy</servlet-name>
+		<servlet-class>com.papercut.silken.SilkenServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 		<init-param>
 			<param-name>disableCaching</param-name>
 			<param-value>true</param-value>
@@ -32,7 +50,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 
 	<servlet-mapping>
-	  <servlet-name>soy</servlet-name>
-    <url-pattern>/soy/*</url-pattern>
+		<servlet-name>soy</servlet-name>
+		<url-pattern>/soy/*</url-pattern>
 	</servlet-mapping>
 </web-app>

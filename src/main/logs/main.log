@@ -317,3 +317,153 @@ alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s [42102-145
 [2013-07-05 11:53:09] [INFO ] UserEditController:53 - Trying to add user mrx12...
 [2013-07-05 11:53:09] [WARN ] HqlSqlWalker:929 - [DEPRECATION] Encountered positional parameter near line 1, column 41.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
 [2013-07-05 11:53:09] [INFO ] UserEditController:74 - Successfully added user mrx12
+[2013-07-05 13:58:21] [INFO ] ResteasyDeployment:82 - Deploying javax.ws.rs.core.Application: class org.example.SettingWork
+[2013-07-05 13:58:21] [INFO ] Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[2013-07-05 13:58:21] [INFO ] Version:41 - HHH000412: Hibernate Core {4.2.2.Final}
+[2013-07-05 13:58:21] [INFO ] Environment:239 - HHH000206: hibernate.properties not found
+[2013-07-05 13:58:21] [INFO ] Environment:342 - HHH000021: Bytecode provider name : javassist
+[2013-07-05 13:58:21] [INFO ] Configuration:1985 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+[2013-07-05 13:58:21] [INFO ] Configuration:2004 - HHH000040: Configuration resource: /hibernate.cfg.xml
+[2013-07-05 13:58:21] [INFO ] Configuration:2126 - HHH000041: Configured SessionFactory: null
+[2013-07-05 13:58:21] [INFO ] DriverManagerConnectionProviderImpl:98 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+[2013-07-05 13:58:21] [INFO ] DriverManagerConnectionProviderImpl:134 - HHH000115: Hibernate connection pool size: 1
+[2013-07-05 13:58:21] [INFO ] DriverManagerConnectionProviderImpl:137 - HHH000006: Autocommit mode: false
+[2013-07-05 13:58:21] [INFO ] DriverManagerConnectionProviderImpl:151 - HHH000401: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+[2013-07-05 13:58:21] [INFO ] DriverManagerConnectionProviderImpl:156 - HHH000046: Connection properties: {user=sa, password=****}
+[2013-07-05 13:58:21] [INFO ] Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[2013-07-05 13:58:21] [INFO ] LobCreatorBuilder:94 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[2013-07-05 13:58:21] [INFO ] TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+[2013-07-05 13:58:21] [INFO ] ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+[2013-07-05 13:58:21] [INFO ] SchemaExport:343 - HHH000227: Running hbm2ddl schema export
+[2013-07-05 13:58:21] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two
+[2013-07-05 13:58:21] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two [42102-145]
+[2013-07-05 13:58:21] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4
+[2013-07-05 13:58:21] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4 [42102-145]
+[2013-07-05 13:58:21] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s
+[2013-07-05 13:58:21] [ERROR] SchemaExport:426 - Table "QUESTIONSETS" not found; SQL statement:
+alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s [42102-145]
+[2013-07-05 13:58:21] [INFO ] SchemaExport:405 - HHH000230: Schema export complete
+[2013-07-08 10:29:19] [INFO ] Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[2013-07-08 10:29:19] [INFO ] Version:41 - HHH000412: Hibernate Core {4.2.2.Final}
+[2013-07-08 10:29:19] [INFO ] Environment:239 - HHH000206: hibernate.properties not found
+[2013-07-08 10:29:19] [INFO ] Environment:342 - HHH000021: Bytecode provider name : javassist
+[2013-07-08 10:29:19] [INFO ] Configuration:1985 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+[2013-07-08 10:29:19] [INFO ] Configuration:2004 - HHH000040: Configuration resource: /hibernate.cfg.xml
+[2013-07-08 10:29:19] [INFO ] Configuration:2126 - HHH000041: Configured SessionFactory: null
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:98 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:134 - HHH000115: Hibernate connection pool size: 1
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:137 - HHH000006: Autocommit mode: false
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:151 - HHH000401: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:156 - HHH000046: Connection properties: {user=sa, password=****}
+[2013-07-08 10:29:19] [INFO ] Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[2013-07-08 10:29:19] [INFO ] LobCreatorBuilder:94 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[2013-07-08 10:29:19] [INFO ] TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+[2013-07-08 10:29:19] [INFO ] ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+[2013-07-08 10:29:19] [INFO ] SchemaExport:343 - HHH000227: Running hbm2ddl schema export
+[2013-07-08 10:29:19] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two
+[2013-07-08 10:29:19] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two [42102-145]
+[2013-07-08 10:29:19] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4
+[2013-07-08 10:29:19] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4 [42102-145]
+[2013-07-08 10:29:19] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s
+[2013-07-08 10:29:19] [ERROR] SchemaExport:426 - Table "QUESTIONSETS" not found; SQL statement:
+alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s [42102-145]
+[2013-07-08 10:29:19] [INFO ] SchemaExport:405 - HHH000230: Schema export complete
+[2013-07-08 10:29:19] [INFO ] ResteasyDeployment:82 - Deploying javax.ws.rs.core.Application: class org.example.SettingWork
+[2013-07-08 10:29:19] [INFO ] Configuration:1985 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+[2013-07-08 10:29:19] [INFO ] Configuration:2004 - HHH000040: Configuration resource: /hibernate.cfg.xml
+[2013-07-08 10:29:19] [INFO ] Configuration:2126 - HHH000041: Configured SessionFactory: null
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:98 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:134 - HHH000115: Hibernate connection pool size: 1
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:137 - HHH000006: Autocommit mode: false
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:151 - HHH000401: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+[2013-07-08 10:29:19] [INFO ] DriverManagerConnectionProviderImpl:156 - HHH000046: Connection properties: {user=sa, password=****}
+[2013-07-08 10:29:19] [INFO ] Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[2013-07-08 10:29:19] [INFO ] LobCreatorBuilder:94 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[2013-07-08 10:29:19] [INFO ] TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+[2013-07-08 10:29:19] [INFO ] ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+[2013-07-08 10:29:19] [INFO ] SchemaExport:343 - HHH000227: Running hbm2ddl schema export
+[2013-07-08 10:29:19] [INFO ] SchemaExport:405 - HHH000230: Schema export complete
+[2013-07-08 10:29:44] [INFO ] Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[2013-07-08 10:29:44] [INFO ] Version:41 - HHH000412: Hibernate Core {4.2.2.Final}
+[2013-07-08 10:29:44] [INFO ] Environment:239 - HHH000206: hibernate.properties not found
+[2013-07-08 10:29:44] [INFO ] Environment:342 - HHH000021: Bytecode provider name : javassist
+[2013-07-08 10:29:44] [INFO ] Configuration:1985 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+[2013-07-08 10:29:44] [INFO ] Configuration:2004 - HHH000040: Configuration resource: /hibernate.cfg.xml
+[2013-07-08 10:29:44] [INFO ] Configuration:2126 - HHH000041: Configured SessionFactory: null
+[2013-07-08 10:29:44] [INFO ] DriverManagerConnectionProviderImpl:98 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+[2013-07-08 10:29:44] [INFO ] DriverManagerConnectionProviderImpl:134 - HHH000115: Hibernate connection pool size: 1
+[2013-07-08 10:29:44] [INFO ] DriverManagerConnectionProviderImpl:137 - HHH000006: Autocommit mode: false
+[2013-07-08 10:29:44] [INFO ] DriverManagerConnectionProviderImpl:151 - HHH000401: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+[2013-07-08 10:29:44] [INFO ] DriverManagerConnectionProviderImpl:156 - HHH000046: Connection properties: {user=sa, password=****}
+[2013-07-08 10:29:44] [INFO ] Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[2013-07-08 10:29:44] [INFO ] LobCreatorBuilder:94 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[2013-07-08 10:29:45] [INFO ] TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+[2013-07-08 10:29:45] [INFO ] ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+[2013-07-08 10:29:45] [INFO ] SchemaExport:343 - HHH000227: Running hbm2ddl schema export
+[2013-07-08 10:29:45] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two
+[2013-07-08 10:29:45] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two [42102-145]
+[2013-07-08 10:29:45] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4
+[2013-07-08 10:29:45] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4 [42102-145]
+[2013-07-08 10:29:45] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s
+[2013-07-08 10:29:45] [ERROR] SchemaExport:426 - Table "QUESTIONSETS" not found; SQL statement:
+alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s [42102-145]
+[2013-07-08 10:29:45] [INFO ] SchemaExport:405 - HHH000230: Schema export complete
+[2013-07-08 10:29:45] [INFO ] ResteasyDeployment:82 - Deploying javax.ws.rs.core.Application: class org.example.SettingWork
+[2013-07-08 10:29:45] [INFO ] Configuration:1985 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+[2013-07-08 10:29:45] [INFO ] Configuration:2004 - HHH000040: Configuration resource: /hibernate.cfg.xml
+[2013-07-08 10:29:45] [INFO ] Configuration:2126 - HHH000041: Configured SessionFactory: null
+[2013-07-08 10:29:45] [INFO ] DriverManagerConnectionProviderImpl:98 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+[2013-07-08 10:29:45] [INFO ] DriverManagerConnectionProviderImpl:134 - HHH000115: Hibernate connection pool size: 1
+[2013-07-08 10:29:45] [INFO ] DriverManagerConnectionProviderImpl:137 - HHH000006: Autocommit mode: false
+[2013-07-08 10:29:45] [INFO ] DriverManagerConnectionProviderImpl:151 - HHH000401: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+[2013-07-08 10:29:45] [INFO ] DriverManagerConnectionProviderImpl:156 - HHH000046: Connection properties: {user=sa, password=****}
+[2013-07-08 10:29:45] [INFO ] Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[2013-07-08 10:29:45] [INFO ] LobCreatorBuilder:94 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[2013-07-08 10:29:45] [INFO ] TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+[2013-07-08 10:29:45] [INFO ] ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+[2013-07-08 10:29:45] [INFO ] SchemaExport:343 - HHH000227: Running hbm2ddl schema export
+[2013-07-08 10:29:45] [INFO ] SchemaExport:405 - HHH000230: Schema export complete
+[2013-07-08 10:39:04] [INFO ] Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[2013-07-08 10:39:04] [INFO ] Version:41 - HHH000412: Hibernate Core {4.2.2.Final}
+[2013-07-08 10:39:04] [INFO ] Environment:239 - HHH000206: hibernate.properties not found
+[2013-07-08 10:39:04] [INFO ] Environment:342 - HHH000021: Bytecode provider name : javassist
+[2013-07-08 10:39:04] [INFO ] Configuration:1985 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+[2013-07-08 10:39:04] [INFO ] Configuration:2004 - HHH000040: Configuration resource: /hibernate.cfg.xml
+[2013-07-08 10:39:05] [INFO ] Configuration:2126 - HHH000041: Configured SessionFactory: null
+[2013-07-08 10:39:05] [INFO ] DriverManagerConnectionProviderImpl:98 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+[2013-07-08 10:39:05] [INFO ] DriverManagerConnectionProviderImpl:134 - HHH000115: Hibernate connection pool size: 1
+[2013-07-08 10:39:05] [INFO ] DriverManagerConnectionProviderImpl:137 - HHH000006: Autocommit mode: false
+[2013-07-08 10:39:05] [INFO ] DriverManagerConnectionProviderImpl:151 - HHH000401: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+[2013-07-08 10:39:05] [INFO ] DriverManagerConnectionProviderImpl:156 - HHH000046: Connection properties: {user=sa, password=****}
+[2013-07-08 10:39:05] [INFO ] Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[2013-07-08 10:39:05] [INFO ] LobCreatorBuilder:94 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[2013-07-08 10:39:05] [INFO ] TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+[2013-07-08 10:39:05] [INFO ] ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+[2013-07-08 10:39:05] [INFO ] SchemaExport:343 - HHH000227: Running hbm2ddl schema export
+[2013-07-08 10:39:05] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two
+[2013-07-08 10:39:05] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_ft7bojpo0rx65wm6t22460two [42102-145]
+[2013-07-08 10:39:05] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4
+[2013-07-08 10:39:05] [ERROR] SchemaExport:426 - Table "QUESTIONS" not found; SQL statement:
+alter table QUESTIONS drop constraint FK_bl2wjhq5j87ubkqwqb3s5ulb4 [42102-145]
+[2013-07-08 10:39:05] [ERROR] SchemaExport:425 - HHH000389: Unsuccessful: alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s
+[2013-07-08 10:39:05] [ERROR] SchemaExport:426 - Table "QUESTIONSETS" not found; SQL statement:
+alter table QUESTIONSETS drop constraint FK_1lfsutbenn1e1x5oxtpg9lx6s [42102-145]
+[2013-07-08 10:39:05] [INFO ] SchemaExport:405 - HHH000230: Schema export complete
+[2013-07-08 10:39:05] [INFO ] ResteasyDeployment:82 - Deploying javax.ws.rs.core.Application: class org.example.SettingWork
+[2013-07-08 10:39:51] [WARN ] HqlSqlWalker:929 - [DEPRECATION] Encountered positional parameter near line 1, column 41.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+[2013-07-08 10:39:54] [WARN ] SqlExceptionHelper:145 - SQL Error: 23003, SQLState: 23003
+[2013-07-08 10:39:54] [ERROR] SqlExceptionHelper:147 - Referential integrity constraint violation: "FK_FT7BOJPO0RX65WM6T22460TWO: PUBLIC.QUESTIONS FOREIGN KEY(AUTHOR_ID) REFERENCES PUBLIC.USERS(ID)"; SQL statement:
+delete from USERS where id=? [23003-145]
+[2013-07-08 10:40:30] [INFO ] UserEditController:59 - Trying to add user abv1234...
+[2013-07-08 10:40:30] [INFO ] UserEditController:82 - Successfully added user abv1234
+[2013-07-08 10:40:35] [WARN ] HqlSqlWalker:929 - [DEPRECATION] Encountered positional parameter near line 1, column 51.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+[2013-07-08 10:40:38] [WARN ] HqlSqlWalker:929 - [DEPRECATION] Encountered positional parameter near line 1, column 52.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+[2013-07-08 10:40:38] [WARN ] HqlSqlWalker:929 - [DEPRECATION] Encountered positional parameter near line 1, column 48.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+[2013-07-08 10:41:34] [WARN ] HqlSqlWalker:929 - [DEPRECATION] Encountered positional parameter near line 1, column 49.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.

@@ -3,10 +3,13 @@ package org.example.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.core.Context;
 
-import org.example.SessionFactoryManager;
 import org.hibernate.Session;
+
+import uk.ac.cam.cl.dtg.univdate.HibernateSessionRequestFilter;
 
 
 @Entity
@@ -16,6 +19,9 @@ public class User {
 	/*private Set<QuestionSet> questionSets = new HashSet<QuestionSet>();
 	private Set<Question> questions = new HashSet<Question>();*/
 	@FormParam("id") private String id;
+
+	@Context
+	static HttpServletRequest servletRequest;
 	
 	public User() {}
 	
@@ -25,7 +31,8 @@ public class User {
 	}
 	
 	public static User fromString(String crsid) {
-		Session session = SessionFactoryManager.getInstance().openSession();
+		//Session session = SessionFactoryManager.getInstance().openSession();
+		Session session = HibernateSessionRequestFilter.openSession(servletRequest);
 		session.beginTransaction();
 		User result = (User) session.createQuery("from User where id = ?")
 			.setString(0, crsid)
