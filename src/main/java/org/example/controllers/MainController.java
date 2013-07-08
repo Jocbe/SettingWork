@@ -30,9 +30,12 @@ public class MainController {
 	@Path("/")
 	@ViewWith("/soy/main.index")
 	public Map<String, ?> showIndex() {
+		String uID = (String)servletRequest.getSession().getAttribute("RavenRemoteUser");
+		System.out.println(uID);
+		
 		if (demoDataAdded == false)
 			addDemoData();
-		return ImmutableMap.of();
+		return ImmutableMap.of("cmnt", uID);
 	}
 	
 	@GET @Path("/addDemoData")

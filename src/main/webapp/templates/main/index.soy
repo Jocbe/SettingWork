@@ -2,9 +2,13 @@
 
 /**
  * Index template
+ * @param? cmnt
  */
 {template .index}
 	{call shared.header /}
+	{if not $cmnt} NO DATA!!
+	{else}{$cmnt}
+	{/if}
 	<h1>Index</h1>
 	<ul>
 		<li><a href="question/">Question list</a></li>
