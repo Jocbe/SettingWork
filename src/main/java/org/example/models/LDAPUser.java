@@ -1,17 +1,29 @@
 package org.example.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Id;
 
 public class LDAPUser {
-	private String id;
-	private String displayName;
-	private String email;
-	private String[] institutions;
-	private String[] roles;
-	private String[] phoneNumbers;
-	private String[] wwws;
-	private String[] addresses;
+	private String id = null;
+	private String displayName = null;
+	private String email = null;
+	private List<String> institutions = null;
+	private List<String> roles = null;
+	private List<String> phoneNumbers = null;
+	private List<String> wwws = null;
+	private List<String> addresses = null;
 	private boolean isStudent = true;
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	private String image = null;
 	
 	public LDAPUser() {}
 
@@ -40,43 +52,43 @@ public class LDAPUser {
 		this.email = email;
 	}
 
-	public String[] getInstitutions() {
+	public List<String> getInstitutions() {
 		return institutions;
 	}
 
-	public void setInstitutions(String[] institutions) {
+	public void setInstitutions(List<String> institutions) {
 		this.institutions = institutions;
 	}
 
-	public String[] getRoles() {
+	public List<String> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(String[] roles) {
+	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
 
-	public String[] getPhoneNumbers() {
+	public List<String> getPhoneNumbers() {
 		return phoneNumbers;
 	}
 
-	public void setPhoneNumbers(String[] phoneNumbers) {
+	public void setPhoneNumbers(List<String> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
 	}
 
-	public String[] getWwws() {
+	public List<String> getWwws() {
 		return wwws;
 	}
 
-	public void setWwws(String[] wwws) {
+	public void setWwws(List<String> wwws) {
 		this.wwws = wwws;
 	}
 
-	public String[] getAddresses() {
+	public List<String> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddresses(String[] addresses) {
+	public void setAddresses(List<String> addresses) {
 		this.addresses = addresses;
 	}
 	

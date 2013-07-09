@@ -24,6 +24,6 @@ public class LDAPController {
 	public Map viewLDAP(@PathParam("uID") String uID) {
 		LDAPUser result = LDAPProvider.getUserInfo(uID);
 		//System.out.println("######################  " + result.getId());
-		return ImmutableMap.of("userID", result.getId(), "name", result.getDisplayName(), "email", result.getEmail());
+		return ImmutableMap.of("user", result);
 	}
 }

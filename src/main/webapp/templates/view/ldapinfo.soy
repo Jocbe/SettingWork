@@ -2,16 +2,42 @@
 
 /**
  * This will display some info obtained via LDAP about a given user
- * @param userID
- * @param name
- * @param email
+ * @param user
  */
 {template .ldap}
 	{call shared.header}
-		{param title: 'User '+$userID /}
+		{param title: 'User '+$user.id /}
 	{/call}
-	CRSID: {$userID}<br>
-	Display name: {$name}<br>
-	Email: {$email}
+	<img src="data:image/jpeg;base64,{$user.image}" />
+	<table>
+		<tr>
+			<td>CRSID:</td>
+			<td>{$user.id}</td>
+		</tr>
+		<tr>
+			<td>Display name:</td>
+			<td>{$user.displayName}</td>
+		</tr>
+		<tr>
+			<td>Email:</td>
+			<td>{$user.email}</td>
+		</tr>
+		<tr>
+			<td>Institutions:</td>
+			<td>
+				{foreach $inst in $user.institutions}
+					{$inst}<br>
+				{/foreach}
+			</td>
+		</tr>
+		<tr>
+			<td>Roles:</td>
+			<td>
+				{foreach $role in $user.roles}
+					{$role}<br>
+				{/foreach}
+			</td>
+		</tr>
+	</table>
 	{call shared.footer /}
 {/template}

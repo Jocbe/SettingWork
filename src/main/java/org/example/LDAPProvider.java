@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,9 +29,6 @@ public class LDAPProvider {
 		Hashtable env = new Hashtable();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 		env.put(Context.PROVIDER_URL, "ldap://ldap.lookup.cam.ac.uk:389");
-		//env.put(Context.SECURITY_AUTHENTICATION, "simple");
-		//env.put(Context.SECURITY_CREDENTIALS, "");
-		//env.put(Context.SECURITY_PRINCIPAL, "");
 
 		Attributes a = null;
         try{
@@ -45,27 +43,53 @@ public class LDAPProvider {
         }
        
         try {
-        result.setId(crsid);
-        result.setDisplayName(a.get("displayName").get().toString());
-        result.setEmail(a.get("mail").get().toString());
-        //result.setInstitutions(toArray(a.get("ou")));
-        //result.setRoles(toArray(a.get("title")));
-        if(a.get("misAffiliation").get().toString().equals("staff")) {
-        	result.setStudent(false);
-        }
+        	log.debug("Trying to obtain data for user " + crsid);
+	        result.setId(crsid);
+	        log.debug("Trying to obtain displayName for user " + crsid);
+	        result.setDisplayName(a.get("displayName").get().toString());
+	        log.debug("Trying to obtain email address for user " + crsid);
+	        result.setEmail(a.get("mail").get().toString());
+	        log.debug("Trying to obtain Institutions for user " + crsid);
+	        result.setInstitutions(toList(a.get("ou")));
+	        log.debug("Trying to obtain roles for user " + crsid);
+	        result.setRoles(toList(a.get("title")));
+	        log.debug("Trying to obtain misAffiliation for user " + crsid);
+	        try{
+	        	if(a.get("misAffiliation").get().toString().equals("staff")) {
+	        		result.setStudent(false);
+	        	}
+	        	log.debug("Successfully got misAffiliation");
+	        } catch(NullPointerException e){
+	        	log.warn("Couldn't get misAffiliation! Probably returned null. User set to role student by default.");
+	        }
+	        
+	        log.debug("Trying to get the image for user" + crsid);
+	        result.setImage(a.get("jpegPhoto").get().toString());
+	        System.out.println(a.get("jpegPhoto"));
+	        System.out.println(a.get("jpegPhoto").get());
+	        System.out.println(a.get("jpegPhoto").get().toString());
         } catch (NamingException e) {
 			log.error(e.getMessage());
-			return null;
+			return result;
 		}
+        log.debug("Returning user info for " + crsid);
         return result;
 	}
 	
-	private static String[] toArray(Attribute a) throws NamingException {
+	private static List<String> toList(Attribute a) throws NamingException {
+		log.debug("toList() called with attribute: " + a);
+		if(a == null){
+			log.debug("Attribute is null. Returning empty list.");
+			return new ArrayList<String>();
+		}
+			
 		NamingEnumeration enumResults = a.getAll();
-		List<String> listResults = new LinkedList<String>();
+		List<String> listResults = new ArrayList<String>();
 		while(enumResults.hasMore()){
 			listResults.add(enumResults.next().toString());
 		}
-		return (String[]) listResults.toArray();
+		 
+		log.debug("Successfully returning list of results (probably)");
+		return listResults;
 	}
 }
