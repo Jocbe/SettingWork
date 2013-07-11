@@ -26,4 +26,8 @@ public class LDAPController {
 		//System.out.println("######################  " + result.getId());
 		return ImmutableMap.of("user", result);
 	}
+	
+	/*@GET @Path("/image/{uID}")
+	@Produces("image/jpeg")
+	public*/  
 }
